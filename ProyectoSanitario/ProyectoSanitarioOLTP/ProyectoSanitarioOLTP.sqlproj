@@ -64,9 +64,10 @@
     <Folder Include="Schema\Security\Schema" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Schema\Security\Schema\schema_san.sql" />
     <Build Include="Schema\Tables\paciente.sql" />
     <Build Include="Schema\Tables\hospital.sql" />
+    <Build Include="Schema\Security\Schema\san.sql" />
+    <Build Include="Schema\Tables\HistoriasClinicas.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProyectoSanitarioOLTP.refactorlog" />
