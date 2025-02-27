@@ -1,8 +1,7 @@
-﻿CREATE TABLE [san].[hospital]
-(
-	[cod_hospital] INT NOT NULL IDENTITY(1, 1), 
-    [nombre] NVARCHAR(50) NULL, 
-    [ciudad] NVARCHAR(50) NULL, 
-    [telefono] NVARCHAR(50) NULL, 
-    CONSTRAINT [PK_hospital_cod] PRIMARY KEY ([cod_hospital]) 
-)
+﻿CREATE TABLE san.Hospital (
+	idHospital INT PRIMARY KEY IDENTITY(1, 1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Ciudad NVARCHAR(100) NOT NULL,
+    Telefono NVARCHAR(15),
+    DirectorDNI NVARCHAR(10) -- DNI del médico que es director
+);
