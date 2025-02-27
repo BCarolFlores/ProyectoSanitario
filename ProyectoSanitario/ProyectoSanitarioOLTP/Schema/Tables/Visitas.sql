@@ -12,10 +12,10 @@
     FechaAlta DATE NULL,
     FechaHospitalizacion DATE NULL,
     PRIMARY KEY CLUSTERED (idVisita ASC),
-    CONSTRAINT FK_Visita_HistoriaClinica FOREIGN KEY (idHist) REFERENCES HistoriasClinica(idHist),
-    CONSTRAINT FK_Visita_Hospital FOREIGN KEY (idHospital) REFERENCES Hospital(idHospital),
-    CONSTRAINT FK_Visita_Servicio FOREIGN KEY (idServicio) REFERENCES Servicio(idServicio),
-    CONSTRAINT FK_Visita_Medico FOREIGN KEY (idMedico) REFERENCES Medico(idMedico)
+    CONSTRAINT FK_Visita_HistoriaClinica FOREIGN KEY (idHist) REFERENCES san.HistoriasClinica(idHist),
+    CONSTRAINT FK_Visita_Hospital FOREIGN KEY (idHospital) REFERENCES san.Hospital(idHospital),
+    CONSTRAINT FK_Visita_Servicio FOREIGN KEY (idServicio) REFERENCES san.Servicio(idServicio),
+    CONSTRAINT FK_Visita_Medico FOREIGN KEY (idMedico) REFERENCES san.Medico(idMedico)
 ) ON [PRIMARY];
 GO
 
