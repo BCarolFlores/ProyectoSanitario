@@ -10,7 +10,7 @@
     Ingreso BIT DEFAULT 0, -- 1 si hubo ingreso, 0 si no
     NumeroHabitacion NVARCHAR(10),
     FechaAlta DATE,
-    FOREIGN KEY (idHist) REFERENCES HistoriasClinica(idHist),
+    FOREIGN KEY (idHist) REFERENCES HistoriaClinica(idHist),
     FOREIGN KEY (idHospital) REFERENCES Hospital(idHospital),
     FOREIGN KEY (idServicio) REFERENCES Servicio(idServicio),
     FOREIGN KEY (idMedico) REFERENCES Medico(idMedico)
