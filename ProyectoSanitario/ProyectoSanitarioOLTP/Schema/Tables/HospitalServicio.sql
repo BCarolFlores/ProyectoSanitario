@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[HospitalServicio](
+CREATE TABLE [san].[HospitalServicio](
 	[idHospitalServicio] [int] IDENTITY(1,1) NOT NULL,
 	[idHospital] [int] NULL,
 	[idServicio] [int] NULL,
