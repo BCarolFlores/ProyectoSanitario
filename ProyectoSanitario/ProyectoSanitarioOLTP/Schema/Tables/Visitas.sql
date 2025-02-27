@@ -1,20 +1,17 @@
-﻿CREATE TABLE san.Visitas (
-    VisitaID INT PRIMARY KEY IDENTITY(1, 1),
-    codHist INT,
+﻿CREATE TABLE san.Visita (
+    idVisita INT PRIMARY KEY IDENTITY(1, 1),
+    idHist INT,
     FechaHora DATETIME NOT NULL,
-    codHospital INT,
-    idServicio NVARCHAR(10),
-    DNI NVARCHAR(10), -- Médico que atendió
+    idHospital INT,
+    idServicio INT,
+    idMedico INT, -- Médico que atendió
     Diagnostico NVARCHAR(255),
     Tratamiento NVARCHAR(255),
     Ingreso BIT DEFAULT 0, -- 1 si hubo ingreso, 0 si no
     NumeroHabitacion NVARCHAR(10),
     FechaAlta DATE,
- 
-   FOREIGN KEY (codHist) REFERENCES HistoriasClinicas(codHist),
-   FOREIGN KEY (codHospital) REFERENCES hospital(codHospital),
-   FOREIGN KEY (idServicio) REFERENCES Servicios(idServicio),
-   FOREIGN KEY (DNI) REFERENCES Medico(DNI)
+    FOREIGN KEY (idHist) REFERENCES HistoriasClinica(idHist),
+    FOREIGN KEY (idHospital) REFERENCES Hospital(idHospital),
+    FOREIGN KEY (idServicio) REFERENCES Servicio(idServicio),
+    FOREIGN KEY (idMedico) REFERENCES Medico(idMedico)
 );
-
-
