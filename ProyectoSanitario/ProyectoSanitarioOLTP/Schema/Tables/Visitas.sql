@@ -12,9 +12,9 @@
     FechaAlta DATE,
  
    FOREIGN KEY (codHist) REFERENCES HistoriasClinicas(codHist),
-   FOREIGN KEY (codHospital) REFERENCES Hospitales(codHospital),
+   FOREIGN KEY (codHospital) REFERENCES hospital(codHospital),
    FOREIGN KEY (idServicio) REFERENCES Servicios(idServicio),
-   FOREIGN KEY (DNI) REFERENCES Medicos(DNI)
+   FOREIGN KEY (DNI) REFERENCES Medico(DNI)
 );
 
 
