@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Hospital](
+﻿CREATE TABLE [san].[Hospital](
 	[idHospital] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [nvarchar](100) NOT NULL,
 	[Ciudad] [nvarchar](100) NOT NULL,

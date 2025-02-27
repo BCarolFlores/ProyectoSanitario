@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Paciente](
+﻿CREATE TABLE [san].[Paciente](
 	[idPaciente] [int] IDENTITY(1,1) NOT NULL,
 	[DNI] [nvarchar](10) NULL,
 	[ApellidosNombre] [nvarchar](100) NOT NULL,
