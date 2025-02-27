@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [san].[Paciente](--final
 	[idPaciente] [int] IDENTITY(1,1) NOT NULL,
-	[DNI] [nvarchar](10) NULL,
+	[DNI] [nvarchar](10) NOT NULL,
 	[Nombre] [nvarchar](100) NOT NULL,
 	[Apellidos] [nvarchar](100) NOT NULL,
-	[FechaNacimiento] [date] NULL,
+	[FechaNacimiento] [date] NOT NULL,
 	[NumeroSeguridadSocial] [nvarchar](20) NOT NULL,
 	[OtrosDatos] [nvarchar](255) NULL,
 PRIMARY KEY CLUSTERED 
