@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[HistoriasClinica](
+CREATE TABLE [san].[HistoriasClinica](
 	[idHist] [int] IDENTITY(1,1) NOT NULL,
 	[codHist] [int] NOT NULL,
 	[idPaciente] [int] NULL,
