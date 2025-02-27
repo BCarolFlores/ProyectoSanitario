@@ -2,7 +2,7 @@
 
 ## Integrantes:
 
-Brenda Carol
+Brenda Carol Flores
 
 Benjamin Tejerina
 
