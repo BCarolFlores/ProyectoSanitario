@@ -6,5 +6,5 @@ CREATE TABLE [san].[Medicos] (
     [codHospital] INT,
     [EsDirector] BIT DEFAULT 0, -- 1 si es director, 0 si no
     CONSTRAINT [PK_IdMedico] PRIMARY KEY ([IdMedico]),
-    FOREIGN KEY (codHospital) REFERENCES Hospitales(codHospital)
+    FOREIGN KEY (idHospital) REFERENCES Hospitales(idHospital)
   );
