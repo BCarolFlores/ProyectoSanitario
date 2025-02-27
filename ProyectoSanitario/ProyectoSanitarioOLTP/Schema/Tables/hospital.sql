@@ -1,8 +1,12 @@
-﻿CREATE TABLE [san].[hospital]
+﻿CREATE TABLE [dbo].[Hospital](
+	[idHospital] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [nvarchar](100) NOT NULL,
+	[Ciudad] [nvarchar](100) NOT NULL,
+	[Telefono] [nvarchar](15) NULL,
+	[DirectorDNI] [nvarchar](10) NULL,
+PRIMARY KEY CLUSTERED 
 (
-	[cod_hospital] INT NOT NULL IDENTITY(1, 1), 
-    [nombre] NVARCHAR(50) NULL, 
-    [ciudad] NVARCHAR(50) NULL, 
-    [telefono] NVARCHAR(50) NULL, 
-    CONSTRAINT [PK_hospital_cod] PRIMARY KEY ([cod_hospital]) 
-)
+	[idHospital] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
