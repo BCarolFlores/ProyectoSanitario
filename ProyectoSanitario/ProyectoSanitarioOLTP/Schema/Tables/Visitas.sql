@@ -1,4 +1,4 @@
-﻿CREATE TABLE Visitas (
+﻿CREATE TABLE san.Visitas (
     VisitaID INT PRIMARY KEY IDENTITY(1, 1),
     codHist INT,
     FechaHora DATETIME NOT NULL,
