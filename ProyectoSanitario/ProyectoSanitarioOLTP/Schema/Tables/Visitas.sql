@@ -19,15 +19,3 @@
 ) ON [PRIMARY];
 GO
 
-ALTER TABLE [san].[Visita]  WITH CHECK ADD FOREIGN KEY([idHist])
-REFERENCES [san].[HistoriasClinica] ([idHist])
-GO
-ALTER TABLE [san].[Visita]  WITH CHECK ADD FOREIGN KEY([idHospital])
-REFERENCES [san].[Hospital] ([idHospital])
-GO
-ALTER TABLE [san].[Visita]  WITH CHECK ADD FOREIGN KEY([idMedico])
-REFERENCES [san].[Medico] ([idMedico])
-GO
-ALTER TABLE [san].[Visita]  WITH CHECK ADD FOREIGN KEY([idServicio])
-REFERENCES [san].[Servicio] ([idServicio])
-GO
