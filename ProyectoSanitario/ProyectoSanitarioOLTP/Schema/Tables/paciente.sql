@@ -1,4 +1,4 @@
-﻿CREATE TABLE san.paciente (
+﻿CREATE TABLE san.paciente ( --probando un cambio
 	idPaciente INT  IDENTITY(1, 1) NOT NULL,
     DNI NVARCHAR(10) NULL,
     ApellidosNombre NVARCHAR(100) NULL,
