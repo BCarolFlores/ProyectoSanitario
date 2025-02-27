@@ -1,7 +1,12 @@
-﻿CREATE TABLE san.Hospital (
-	idHospital INT PRIMARY KEY IDENTITY(1, 1),
-    Nombre NVARCHAR(100) NOT NULL,
-    Ciudad NVARCHAR(100) NOT NULL,
-    Telefono NVARCHAR(15),
-    DirectorDNI NVARCHAR(10) -- DNI del médico que es director
-);
+﻿CREATE TABLE [san].[Hospital](
+	[idHospital] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [nvarchar](100) NOT NULL,
+	[Ciudad] [nvarchar](100) NOT NULL,
+	[Telefono] [nvarchar](15) NULL,
+	[DirectorDNI] [nvarchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[idHospital] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
