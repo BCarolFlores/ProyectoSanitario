@@ -1,6 +1,6 @@
 # ProyectoSanitario
 
-Integrantes:
+## Integrantes:
 
 Brenda Carol
 
