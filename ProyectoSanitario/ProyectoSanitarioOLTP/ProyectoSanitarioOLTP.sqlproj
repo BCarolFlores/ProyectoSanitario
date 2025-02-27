@@ -68,11 +68,11 @@
     <Build Include="Schema\Tables\hospital.sql" />
     <Build Include="Schema\Security\Schema\san.sql" />
     <Build Include="Schema\Tables\Visitas.sql" />
-    <Build Include="Schema\Tables\medicos.sql" />
-    <Build Include="Schema\Tables\servicios.sql" />
     <Build Include="Schema\Tables\HistoriaClinica.sql" />
     <Build Include="Schema\Tables\MedicoServicio.sql" />
     <Build Include="Schema\Tables\HospitalServicio.sql" />
+    <Build Include="Schema\Tables\medico.sql" />
+    <Build Include="Schema\Tables\servicio.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProyectoSanitarioOLTP.refactorlog" />
