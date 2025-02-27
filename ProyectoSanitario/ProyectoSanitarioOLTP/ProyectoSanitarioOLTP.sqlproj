@@ -70,6 +70,8 @@
     <Build Include="Schema\Tables\HistoriasClinicas.sql" />
     <Build Include="Schema\Tables\MedicoServicios.sql" />
     <Build Include="Schema\Tables\Visitas.sql" />
+    <Build Include="Schema\Tables\medicos.sql" />
+    <Build Include="Schema\Tables\servicios.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProyectoSanitarioOLTP.refactorlog" />
