@@ -1,9 +1,8 @@
-﻿CREATE TABLE [san].[paciente]
-(
-	[dni] INT NOT NULL , 
-    [nombre_apellido] NVARCHAR(50) NULL, 
-    [fecha_nacimiento] DATE NULL, 
-    [numero_seguridad_social] NVARCHAR(50) NULL, 
-    [otros_datos] NVARCHAR(MAX) NULL, 
-    CONSTRAINT [PK_paciente_dni] PRIMARY KEY ([dni])
-)
+﻿CREATE TABLE san.Paciente (
+	idPaciente INT PRIMARY KEY IDENTITY(1, 1),
+    DNI NVARCHAR(10),
+    ApellidosNombre NVARCHAR(100) NOT NULL,
+    FechaNacimiento DATE,
+    NumeroSeguridadSocial NVARCHAR(20) NOT NULL,
+    OtrosDatos NVARCHAR(255)
+);
