@@ -2,6 +2,7 @@ CREATE TABLE [san].[HistoriasClinica](
 	[idHist] [int] IDENTITY(1,1) NOT NULL,
 	[codHist] [int] NOT NULL,
 	[idPaciente] [int] NULL,
+	FOREIGN KEY([idPaciente]) REFERENCES [san].[Paciente] ([idPaciente]),
 PRIMARY KEY CLUSTERED 
 (
 	[idHist] ASC
