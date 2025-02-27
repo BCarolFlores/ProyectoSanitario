@@ -3,6 +3,8 @@ CREATE TABLE [san].[HospitalServicio](
 	[idHospital] [int] NULL,
 	[idServicio] [int] NULL,
 	[NumeroCamas] [int] NULL,
+FOREIGN KEY([idHospital]) REFERENCES [san].[Hospital] ([idHospital]),
+FOREIGN KEY([idServicio]) REFERENCES [san].[Servicio] ([idServicio]),
 PRIMARY KEY CLUSTERED 
 (
 	[idHospitalServicio] ASC
