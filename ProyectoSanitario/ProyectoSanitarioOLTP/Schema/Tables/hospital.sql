@@ -4,6 +4,7 @@
 	[Ciudad] [nvarchar](100) NOT NULL,
 	[Telefono] [nvarchar](15) NULL,
 	[DirectorDNI] [nvarchar](10) NULL,
+	[RowVersion] [rowversion] NOT NULL
 PRIMARY KEY CLUSTERED 
 (
 	[idHospital] ASC

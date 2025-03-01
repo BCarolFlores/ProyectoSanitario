@@ -3,6 +3,7 @@ CREATE TABLE [san].[Servicio](
 	[idServicio] [int] IDENTITY(1,1) NOT NULL,
 	[NombreCompleto] [nvarchar](100) NOT NULL,
 	[Comentario] [nvarchar](255) NULL,
+	[RowVersion] [rowversion] NOT NULL
 PRIMARY KEY CLUSTERED 
 (
 	[idServicio] ASC

@@ -2,6 +2,7 @@ CREATE TABLE [san].[MedicoServicio](
 	[idMedicoServicio] [int] IDENTITY(1,1) NOT NULL,
 	[idMedico] [int] NULL,
 	[idServicio] [int] NULL,
+	[RowVersion] [rowversion] NOT NULL
 
 FOREIGN KEY([idMedico]) REFERENCES [san].[Medico] ([idMedico]),
 FOREIGN KEY([idServicio]) REFERENCES [san].[Servicio] ([idServicio]),

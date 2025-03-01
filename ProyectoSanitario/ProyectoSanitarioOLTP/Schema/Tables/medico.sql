@@ -7,6 +7,7 @@ CREATE TABLE [san].[Medico](
 	[FechaNacimiento] [date] NULL,
 	[idHospital] [int] NULL,
 	[EsDirector] [bit] NULL,
+	[RowVersion] [rowversion] NOT NULL
 	FOREIGN KEY([idHospital]) REFERENCES [san].[Hospital] ([idHospital]),
 PRIMARY KEY CLUSTERED 
 (

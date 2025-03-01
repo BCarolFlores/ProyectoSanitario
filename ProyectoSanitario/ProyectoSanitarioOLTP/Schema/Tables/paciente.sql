@@ -6,6 +6,7 @@
 	[FechaNacimiento] [date] NOT NULL,
 	[NumeroSeguridadSocial] [nvarchar](20) NOT NULL,
 	[OtrosDatos] [nvarchar](255) NULL,
+	[RowVersion] [rowversion] NOT NULL
 PRIMARY KEY CLUSTERED 
 (
 	[idPaciente] ASC

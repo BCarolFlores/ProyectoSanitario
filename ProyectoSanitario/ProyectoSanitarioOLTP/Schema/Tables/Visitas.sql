@@ -11,6 +11,7 @@
     NumeroHabitacion NVARCHAR(10) NULL,
     FechaAlta DATE NULL,
     FechaHospitalizacion DATE NULL,
+    [RowVersion] [rowversion] NOT NULL
     PRIMARY KEY CLUSTERED (idVisita ASC),
     CONSTRAINT FK_Visita_HistoriaClinica FOREIGN KEY (idHist) REFERENCES san.HistoriasClinica(idHist),
     CONSTRAINT FK_Visita_Hospital FOREIGN KEY (idHospital) REFERENCES san.Hospital(idHospital),
