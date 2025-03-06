@@ -4,7 +4,7 @@
     codHospital NVARCHAR(20),
     Nombre NVARCHAR(100),
     Ciudad NVARCHAR(100),
-    Telefono NVARCHAR(15),
+    Telefono NVARCHAR(20),
     DirectorDNI NVARCHAR(10),
     RowVersion TIMESTAMP
 );
