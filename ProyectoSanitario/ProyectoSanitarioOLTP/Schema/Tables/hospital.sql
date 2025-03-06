@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [san].[Hospital](
 	[idHospital] [int] IDENTITY(1,1) NOT NULL,
-	[codHospital] [nvarchar](20) NOT NULL,
+	[codHospital] [nvarchar](20) NULL,
 	[Nombre] [nvarchar](100) NOT NULL,
 	[Ciudad] [nvarchar](100) NOT NULL,
 	[Telefono] [nvarchar](15) NULL,
