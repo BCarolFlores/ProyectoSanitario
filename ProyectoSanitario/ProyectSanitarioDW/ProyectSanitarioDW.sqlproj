@@ -71,6 +71,7 @@
     <Build Include="Schema\Tables\DimServicio.sql" />
     <Build Include="Schema\Tables\FactVisita.sql" />
     <Build Include="Schema\Tables\FactMedicoServicioHospital.sql" />
+    <Build Include="Schema\Security\Schema\staging.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Schema\Script\Fill_DimTiempo.sql" />
