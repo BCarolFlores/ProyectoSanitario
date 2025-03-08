@@ -61,6 +61,7 @@
     <Folder Include="Schema\Security" />
     <Folder Include="Schema\Security\Schema" />
     <Folder Include="Schema\Script" />
+    <Folder Include="Schema\Tables\staging" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Tables\DimTiempo.sql" />
@@ -72,6 +73,8 @@
     <Build Include="Schema\Tables\FactVisita.sql" />
     <Build Include="Schema\Tables\FactMedicoServicioHospital.sql" />
     <Build Include="Schema\Security\Schema\staging.sql" />
+    <Build Include="Schema\Tables\staging\Staging.Medico.sql" />
+    <Build Include="Schema\Tables\staging\Staging.Servicio.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Schema\Script\Fill_DimTiempo.sql" />
