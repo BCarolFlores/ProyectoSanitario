@@ -62,6 +62,7 @@
     <Folder Include="Schema\Security\Schema" />
     <Folder Include="Schema\Script" />
     <Folder Include="Schema\Tables\staging" />
+    <Folder Include="Schema\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Tables\DimTiempo.sql" />
@@ -75,6 +76,9 @@
     <Build Include="Schema\Security\Schema\staging.sql" />
     <Build Include="Schema\Tables\staging\Staging.Medico.sql" />
     <Build Include="Schema\Tables\staging\Staging.Servicio.sql" />
+    <Build Include="Schema\Tables\PackageConfig.sql" />
+    <Build Include="Schema\Stored Procedures\GetLastPackageRowVersion.sql" />
+    <Build Include="Schema\Stored Procedures\UpdateLastPackageRowVersion.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Schema\Script\Fill_DimTiempo.sql" />
