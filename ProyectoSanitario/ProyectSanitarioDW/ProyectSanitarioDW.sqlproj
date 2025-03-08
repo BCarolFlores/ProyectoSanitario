@@ -81,6 +81,7 @@
     <Build Include="Schema\Stored Procedures\UpdateLastPackageRowVersion.sql" />
     <Build Include="Schema\Stored Procedures\DW_MergeDimMedico.sql" />
     <Build Include="Schema\Stored Procedures\DW_MergeDimServicio.sql" />
+    <Build Include="Schema\Stored Procedures\DW_MergeDimPaciente.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Schema\Script\Fill_DimTiempo.sql" />

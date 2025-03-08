@@ -6,6 +6,5 @@
     Apellidos NVARCHAR(100),
     FechaNacimiento DATE,
     NumeroSeguridadSocial NVARCHAR(20),
-    OtrosDatos NVARCHAR(255),
-    RowVersion TIMESTAMP
+    OtrosDatos NVARCHAR(255)
 );
