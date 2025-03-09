@@ -1,0 +1,1878 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2025 9:17:33 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-5QRVO4G"
+  DTS:CreatorName="DESKTOP-5QRVO4G\HOME"
+  DTS:DTSID="{4D7883CB-1FC3-4EB0-B3E8-CA1235C36B86}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="16394"
+  DTS:ObjectName="fctVisita"
+  DTS:PackageType="5"
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{3A3F39AE-63A6-45A7-948D-AD757F6F25B0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[source.ProyectoSanitarioOLTP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9089036F-A6E4-4A40-BF9C-38D025242DDC}"
+      DTS:ObjectName="source.ProyectoSanitarioOLTP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-5QRVO4G;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-fctVisita-{9089036F-A6E4-4A40-BF9C-38D025242DDC}DESKTOP-5QRVO4G.ProyectSanitarioDW;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[target.ProyectSanitarioDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5554F81D-66F2-40BF-BEE8-78FAAB2AC8E8}"
+      DTS:ObjectName="target.ProyectSanitarioDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-5QRVO4G;Initial Catalog=ProyectSanitarioDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-fctVisita-{5554F81D-66F2-40BF-BEE8-78FAAB2AC8E8}DESKTOP-5QRVO4G.ProyectSanitarioDW;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{86D91B20-649F-4692-8E6D-BD7671830C46}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dbts">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{15FF432D-CCF6-4A6B-B74C-41E9AB0BDE37}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fechafin">
+      <DTS:VariableValue
+        DTS:DataType="8">20250202</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0721C7D4-A742-4E72-84ED-D86E53925FDA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="fechaini">
+      <DTS:VariableValue
+        DTS:DataType="8">20250201</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2DA3CCF6-6CAD-48B5-97F0-6F3EC9CC1446}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="lastRowVersion">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CleanUpStaging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{F5160AFE-B785-40E1-BAB9-4777680F11B1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CleanUpStaging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5554F81D-66F2-40BF-BEE8-78FAAB2AC8E8}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE staging.Visita" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Fact Visita"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{13CD1913-565C-4271-A1B1-A15A16084A21}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Fact Visita"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Fact Visita\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Fact Visita\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Inputs[Derived Column Input].Columns[NumeroHabitacion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="NumeroHabitacion"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumeroHabitacion]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Inputs[Derived Column Input].Columns[Diagnostico]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Diagnostico"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[Diagnostico]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Inputs[Derived Column Input].Columns[Tratamiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Tratamiento"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tratamiento]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Inputs[Derived Column Input].Columns[fechaAlta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="fechaAlta"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[fechaAlta]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Fact Visita\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vhab]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vhab]"
+                      name="vhab"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,255)#{Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumeroHabitacion]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,255)NumeroHabitacion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vdiagnostico]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vdiagnostico]"
+                      name="vdiagnostico"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,255)#{Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[Diagnostico]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,255)Diagnostico</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vtratamiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vtratamiento]"
+                      name="vtratamiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,255)#{Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tratamiento]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,255)Tratamiento</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vfechaalta]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vfechaalta]"
+                      name="vfechaalta"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,255)#{Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[fechaAlta]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,255)fechaAlta</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Fact Visita\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Visita\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[san].[FactVisita]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Visita\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.ProyectSanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.ProyectSanitarioDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idTiempo]"
+                      cachedDataType="i4"
+                      cachedName="idTiempo"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idTiempo]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idTiempo]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[codHist]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="codHist"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[codHist]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[codHist]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idPaciente]"
+                      cachedDataType="i4"
+                      cachedName="idPaciente"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idPacienteSK]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idPaciente]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idMedico]"
+                      cachedDataType="i4"
+                      cachedName="idMedico"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoSK]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idMedico]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idHospital]"
+                      cachedDataType="i4"
+                      cachedName="idHospital"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idHospitalSK]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idHospital]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idServicio]"
+                      cachedDataType="i4"
+                      cachedName="idServicio"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idServicioSK]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idServicio]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FechaHora]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaHora"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVisita]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaHora]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[vhab]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="vhab"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumeroHabitacion]"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vhab]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[vdiagnostico]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="vdiagnostico"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diagnostico]"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vdiagnostico]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[vtratamiento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="vtratamiento"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vtratamiento]" />
+                    <inputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[vfechaalta]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="vfechaalta"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaAlta]"
+                      lineageId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output].Columns[vfechaalta]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idVisitaSK]"
+                      dataType="i4"
+                      name="idVisitaSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idPacienteSK]"
+                      dataType="i4"
+                      name="idPacienteSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoSK]"
+                      dataType="i4"
+                      name="idMedicoSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idHospitalSK]"
+                      dataType="i4"
+                      name="idHospitalSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idServicioSK]"
+                      dataType="i4"
+                      name="idServicioSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idTiempo]"
+                      dataType="i4"
+                      name="idTiempo" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVisita]"
+                      dataType="dbDate"
+                      name="FechaVisita" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumeroHabitacion]"
+                      dataType="wstr"
+                      length="255"
+                      name="NumeroHabitacion" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diagnostico]"
+                      dataType="wstr"
+                      length="255"
+                      name="Diagnostico" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tratamiento" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaAlta]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[codHist]"
+                      dataType="i4"
+                      name="codHist" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Visita\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Fact Visita\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">execute san.GetVisitChangeByRowVersion</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Fact Visita\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.ProyectSanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.ProyectSanitarioDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idVisita]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idVisita]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idVisita]"
+                      name="idVisita"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idPaciente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idPaciente]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idPaciente]"
+                      name="idPaciente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idMedico]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idMedico]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idMedico]"
+                      name="idMedico"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idHospital]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idHospital]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idHospital]"
+                      name="idHospital"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idServicio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idServicio]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idServicio]"
+                      name="idServicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idTiempo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idTiempo]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[idTiempo]"
+                      name="idTiempo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaHora]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaHora]"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaHora]"
+                      name="FechaHora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumeroHabitacion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumeroHabitacion]"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumeroHabitacion]"
+                      name="NumeroHabitacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[Diagnostico]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Diagnostico]"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[Diagnostico]"
+                      name="Diagnostico"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tratamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tratamiento]"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tratamiento]"
+                      name="Tratamiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[fechaAlta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fechaAlta]"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[fechaAlta]"
+                      name="fechaAlta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[codHist]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[codHist]"
+                      length="50"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].Columns[codHist]"
+                      name="codHist"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idVisita]"
+                      dataType="i4"
+                      name="idVisita" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idPaciente]"
+                      dataType="i4"
+                      name="idPaciente" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idMedico]"
+                      dataType="i4"
+                      name="idMedico" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idHospital]"
+                      dataType="i4"
+                      name="idHospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idServicio]"
+                      dataType="i4"
+                      name="idServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idTiempo]"
+                      dataType="i4"
+                      name="idTiempo" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaHora]"
+                      dataType="dbTimeStamp"
+                      name="FechaHora" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumeroHabitacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="NumeroHabitacion" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Diagnostico]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Diagnostico" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tratamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Tratamiento" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fechaAlta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="fechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[codHist]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="codHist" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idVisita]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idVisita]"
+                      name="idVisita" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idPaciente]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idPaciente]"
+                      name="idPaciente" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idMedico]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idMedico]"
+                      name="idMedico" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idHospital]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idHospital]"
+                      name="idHospital" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idServicio]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idServicio]"
+                      name="idServicio" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idTiempo]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idTiempo]"
+                      name="idTiempo" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaHora]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaHora]"
+                      name="FechaHora" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumeroHabitacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumeroHabitacion]"
+                      name="NumeroHabitacion" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Diagnostico]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Diagnostico]"
+                      name="Diagnostico" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tratamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tratamiento]"
+                      name="Tratamiento" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fechaAlta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fechaAlta]"
+                      name="fechaAlta" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[codHist]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[codHist]"
+                      name="codHist" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Fact Visita.Paths[Derived Column Output]"
+              endId="Package\Load Fact Visita\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Fact Visita\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Fact Visita.Paths[OLE DB Source Output]"
+              endId="Package\Load Fact Visita\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Fact Visita\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Visita Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6B51704C-0628-41E7-80A6-503410224996}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Visita Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Visita Staging\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Visita Staging\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Visita Staging\Derived Column.Inputs[Derived Column Input].Columns[NumeroHabitacion]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="NumeroHabitacion"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumeroHabitacion]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\Derived Column.Inputs[Derived Column Input].Columns[Diagnostico]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Diagnostico"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Diagnostico]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\Derived Column.Inputs[Derived Column Input].Columns[Tratamiento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Tratamiento"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tratamiento]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Visita Staging\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[nhab]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[nhab]"
+                      name="nhab"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,255,1252)#{Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumeroHabitacion]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,255,1252)NumeroHabitacion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[ndiag]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[ndiag]"
+                      name="ndiag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,255,1252)#{Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Diagnostico]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,255,1252)Diagnostico</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[ntratamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[ntratamiento]"
+                      name="ntratamiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,255,1252)#{Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tratamiento]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,255,1252)Tratamiento</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Visita Staging\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Visita Staging\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[staging].[Visita]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Visita Staging\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.ProyectSanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.ProyectSanitarioDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idVisita]"
+                      cachedDataType="i4"
+                      cachedName="idVisita"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idVisita]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idVisita]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idPaciente]"
+                      cachedDataType="i4"
+                      cachedName="idPaciente"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idPaciente]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idPaciente]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idMedico]"
+                      cachedDataType="i4"
+                      cachedName="idMedico"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idMedico]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idMedico]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idHospital]"
+                      cachedDataType="i4"
+                      cachedName="idHospital"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idHospital]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idHospital]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idServicio]"
+                      cachedDataType="i4"
+                      cachedName="idServicio"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idServicio]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idServicio]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FechaHora]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FechaHora"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaHora]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaHora]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fechaAlta]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="fechaAlta"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fechaAlta]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[fechaAlta]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[codHist]"
+                      cachedDataType="i4"
+                      cachedName="codHist"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[codHist]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[codHist]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[nhab]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="nhab"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumeroHabitacion]"
+                      lineageId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[nhab]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ndiag]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ndiag"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diagnostico]"
+                      lineageId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[ndiag]" />
+                    <inputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ntratamiento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="ntratamiento"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      lineageId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output].Columns[ntratamiento]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idVisita]"
+                      dataType="i4"
+                      name="idVisita" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idPaciente]"
+                      dataType="i4"
+                      name="idPaciente" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idMedico]"
+                      dataType="i4"
+                      name="idMedico" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idHospital]"
+                      dataType="i4"
+                      name="idHospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idServicio]"
+                      dataType="i4"
+                      name="idServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaHora]"
+                      dataType="dbTimeStamp"
+                      name="FechaHora" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumeroHabitacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="NumeroHabitacion" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diagnostico]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Diagnostico" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Tratamiento" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fechaAlta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="fechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[codHist]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="codHist" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Visita Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Visita Staging\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [san].[GetVisitChangeByRowVersion] @fechaini=?,@fechafin=?</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"@fechaini:Input",{0721C7D4-A742-4E72-84ED-D86E53925FDA};"@fechafin:Input",{15FF432D-CCF6-4A6B-B74C-41E9AB0BDE37};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Visita Staging\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[source.ProyectoSanitarioOLTP]"
+                  connectionManagerRefId="Package.ConnectionManagers[source.ProyectoSanitarioOLTP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idVisita]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idVisita]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idVisita]"
+                      name="idVisita"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idPaciente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idPaciente]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idPaciente]"
+                      name="idPaciente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idMedico]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idMedico]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idMedico]"
+                      name="idMedico"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idHospital]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idHospital]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idHospital]"
+                      name="idHospital"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idServicio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idServicio]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[idServicio]"
+                      name="idServicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaHora]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaHora]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FechaHora]"
+                      name="FechaHora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumeroHabitacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumeroHabitacion]"
+                      length="10"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumeroHabitacion]"
+                      name="NumeroHabitacion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Diagnostico]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Diagnostico]"
+                      length="255"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Diagnostico]"
+                      name="Diagnostico"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tratamiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tratamiento]"
+                      length="255"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[Tratamiento]"
+                      name="Tratamiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[fechaAlta]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fechaAlta]"
+                      length="8"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[fechaAlta]"
+                      name="fechaAlta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[codHist]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[codHist]"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[codHist]"
+                      name="codHist"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idVisita]"
+                      dataType="i4"
+                      name="idVisita" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idPaciente]"
+                      dataType="i4"
+                      name="idPaciente" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idMedico]"
+                      dataType="i4"
+                      name="idMedico" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idHospital]"
+                      dataType="i4"
+                      name="idHospital" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[idServicio]"
+                      dataType="i4"
+                      name="idServicio" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FechaHora]"
+                      dataType="dbTimeStamp"
+                      name="FechaHora" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumeroHabitacion]"
+                      dataType="wstr"
+                      length="10"
+                      name="NumeroHabitacion" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Diagnostico]"
+                      dataType="wstr"
+                      length="255"
+                      name="Diagnostico" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Tratamiento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tratamiento" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fechaAlta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="fechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[codHist]"
+                      dataType="i4"
+                      name="codHist" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idVisita]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idVisita]"
+                      name="idVisita" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idPaciente]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idPaciente]"
+                      name="idPaciente" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idMedico]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idMedico]"
+                      name="idMedico" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idHospital]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idHospital]"
+                      name="idHospital" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idServicio]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[idServicio]"
+                      name="idServicio" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaHora]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FechaHora]"
+                      name="FechaHora" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumeroHabitacion]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumeroHabitacion]"
+                      name="NumeroHabitacion" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Diagnostico]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Diagnostico]"
+                      name="Diagnostico" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tratamiento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Tratamiento]"
+                      name="Tratamiento" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fechaAlta]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fechaAlta]"
+                      name="fechaAlta" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[codHist]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[codHist]"
+                      name="codHist" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Visita Staging.Paths[Derived Column Output]"
+              endId="Package\Load Visita Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Visita Staging\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Visita Staging.Paths[OLE DB Source Output]"
+              endId="Package\Load Visita Staging\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Visita Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{2BEB7B09-93A4-4D65-A5B2-12C5111FFBC9}"
+      DTS:From="Package\Load Visita Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Load Fact Visita" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2D5E229F-258C-4F8B-8926-31B0C739C033}"
+      DTS:From="Package\CleanUpStaging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\Load Visita Staging" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\CleanUpStaging"
+          TopLeft="283,14" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Load Visita Staging"
+          TopLeft="287.5,87.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="359.5,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,31.5"
+              Start="0,0"
+              End="12.5,24">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.75"
+                    Point2="0,15.75"
+                    Point3="4,15.75" />
+                  <mssgle:LineSegment
+                    End="8.5,15.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5,15.75"
+                    Point2="12.5,15.75"
+                    Point3="12.5,19.75" />
+                  <mssgle:LineSegment
+                    End="12.5,24" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Load Fact Visita"
+          TopLeft="291,168" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="369.75,129.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.5"
+              Start="0,0"
+              End="0,31">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Visita Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load Visita Staging\OLE DB Destination"
+          TopLeft="330,144" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Load Visita Staging\OLE DB Source"
+          TopLeft="319,10" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load Visita Staging\Derived Column"
+          TopLeft="332,74" />
+        <EdgeLayout
+          Id="Package\Load Visita Staging.Paths[OLE DB Source Output]"
+          TopLeft="319,31">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13,64"
+              Start="0,0"
+              End="5.5,64">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,60" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,60"
+                    Point2="-22.5,64"
+                    Point3="-18.5,64" />
+                  <mssgle:LineSegment
+                    End="5.5,64" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Visita Staging.Paths[Derived Column Output]"
+          TopLeft="412.25,116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Visita Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Visita Staging\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Fact Visita">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Load Fact Visita\OLE DB Source"
+          TopLeft="281,13" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load Fact Visita\OLE DB Destination"
+          TopLeft="288,103" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load Fact Visita\Derived Column"
+          TopLeft="63,57" />
+        <EdgeLayout
+          Id="Package\Load Fact Visita.Paths[OLE DB Source Output]"
+          TopLeft="281,34">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-64,44"
+              Start="0,0"
+              End="-56.5,44">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-28,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-28,0"
+                    Point2="-32,0"
+                    Point3="-32,4" />
+                  <mssgle:LineSegment
+                    End="-32,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32,40"
+                    Point2="-32,44"
+                    Point3="-36,44" />
+                  <mssgle:LineSegment
+                    End="-56.5,44" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Fact Visita.Paths[Derived Column Output]"
+          TopLeft="217,83.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71,40.3333333333333"
+              Start="0,0"
+              End="63.5,40.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.9633027522936,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.9633027522936,0"
+                    Point2="29.9633027522936,0"
+                    Point3="29.9633027522936,4" />
+                  <mssgle:LineSegment
+                    End="29.9633027522936,36.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.9633027522936,36.3333333333333"
+                    Point2="29.9633027522936,40.3333333333333"
+                    Point3="33.9633027522936,40.3333333333333" />
+                  <mssgle:LineSegment
+                    End="63.5,40.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Visita\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Fact Visita\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -6,9 +6,9 @@
     idServicioSK INT FOREIGN KEY REFERENCES san.DimServicio(idServicioSK),
     idTiempo INT FOREIGN KEY REFERENCES san.DimTiempo(idTiempo),
     FechaVisita DATE,
-    MotivoVisita NVARCHAR(255),
+    NumeroHabitacion NVARCHAR(255),
     Diagnostico NVARCHAR(255),
     Tratamiento NVARCHAR(255),
-    Observaciones NVARCHAR(255),
+    FechaAlta NVARCHAR(255),
     codHist INT
 );
