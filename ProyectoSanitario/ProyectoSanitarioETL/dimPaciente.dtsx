@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="dimPaciente"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{5C8B579B-30AC-47C2-B2FC-5A877CED9719}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{F1B1767D-C64A-4C4D-8448-9175A1D2BD09}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost\MSSQLSERVER2;Initial Catalog=ProyectoSanitarioOLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-dimPaciente-{24A83B24-C6D6-4878-96BA-CDE099DE9B75}localhost\MSSQLSERVER2.ProyectoSanitarioOLTP;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Application Name=SSIS-dimPaciente-{24A83B24-C6D6-4878-96BA-CDE099DE9B75}source.ProyectoSanitarioOLTP;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB+E3a+HTkXg7Nn84Ol9lgXSUVionCsbtGJfXxYbouwcwAAAAAOgAAAAAIAACAAAAD9Dnc0wKJ37PQOB1fsYjX/E5maO06HC5k/CYCSs+0/5hAAAAAWfBq2QzoNP8d0PZWUASXfQAAAAFdGSJejVjtjpJ8jtnmuG+doLSsdCmiLoEVlGi91zeDwAPNT0rxzklXDYl2cbem79LEaHmJeytcJKzDQtw/W2+Y</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost\MSSQLSERVER2;Initial Catalog=ProyectSanitarioDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-dimPaciente-{25B24524-A41D-480D-AB63-44BDEC6A5CCA}localhost\MSSQLSERVER2.ProyectSanitarioDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioDW;Provider=MSOLEDBSQL.1;Application Name=SSIS-dimPaciente-{25B24524-A41D-480D-AB63-44BDEC6A5CCA}target.ProyectSanitarioDW;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAssv8CoeaLBkwEmDJtxgm+0F6gkdNvn13PJ2Fi/Sw4fQAAAAAOgAAAAAIAACAAAABfZ+96N87i6FTbqnmJsgjnkwsSSKZ3I+occZpQ10aW3hAAAACouJPRbibPsUUY216s8NGMQAAAABmO6ji6zD+g+fhrhcNycxbKfrgc8FHd44cX22XKZjSEjdLyGL2NNQsSIdSITL/uH/q5FA7sISD4jFnmNY7KW/M</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -93,7 +103,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{25B24524-A41D-480D-AB63-44BDEC6A5CCA}"
-          SQLTask:SqlStatementSource="EXECUTE [san].[GetLastPackageRowVersion] @tableName='Paciente'"
+          SQLTask:SqlStatementSource="EXECUTE [san].[GetLastPackageRowVersion] @tableName='san.DimPaciente'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="LastRowVersion"
@@ -1009,25 +1019,41 @@ where [refTable].[idPaciente] = ?</property>
       DTS:To="Package\Update config" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="203,42"
-          Id="Package\GetDatabaseRowVersion"
-          TopLeft="254,31" />
+          Size="165,42"
+          Id="Package\Clean Up Staging"
+          TopLeft="273,191" />
         <NodeLayout
           Size="180,42"
           Id="Package\Get LastRowVersion"
           TopLeft="272,108" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\GetDatabaseRowVersion"
+          TopLeft="254,31" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\LoadPaciente"
+          TopLeft="290,262" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Syn Staging"
+          TopLeft="267,336" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Update config"
+          TopLeft="266,404" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="358.75,73">
@@ -1050,10 +1076,6 @@ where [refTable].[idPaciente] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Clean Up Staging"
-          TopLeft="273,191" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="358.75,150">
@@ -1076,10 +1098,6 @@ where [refTable].[idPaciente] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="146,42"
-          Id="Package\LoadPaciente"
-          TopLeft="290,262" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="359.25,233">
@@ -1102,10 +1120,6 @@ where [refTable].[idPaciente] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Syn Staging"
-          TopLeft="267,336" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="363,304">
@@ -1140,10 +1154,6 @@ where [refTable].[idPaciente] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="147,42"
-          Id="Package\Update config"
-          TopLeft="266,404" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
           TopLeft="337.75,378">
@@ -1179,9 +1189,17 @@ where [refTable].[idPaciente] = ?</property>
           Id="Package\LoadPaciente\Get Paciente"
           TopLeft="160,72" />
         <NodeLayout
+          Size="142,42"
+          Id="Package\LoadPaciente\Load staging"
+          TopLeft="19,221" />
+        <NodeLayout
           Size="129,42"
           Id="Package\LoadPaciente\Búsqueda"
           TopLeft="166,140" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\LoadPaciente\Load Paciente"
+          TopLeft="479,215" />
         <EdgeLayout
           Id="Package\LoadPaciente.Paths[Salida de origen de OLE DB]"
           TopLeft="231,114">
@@ -1204,50 +1222,6 @@ where [refTable].[idPaciente] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\LoadPaciente\Load staging"
-          TopLeft="19,221" />
-        <EdgeLayout
-          Id="Package\LoadPaciente.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="210.333333333333,182">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-120.333333333333,39"
-              Start="0,0"
-              End="-120.333333333333,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.8866768759571" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.8866768759571"
-                    Point2="0,15.8866768759571"
-                    Point3="-4,15.8866768759571" />
-                  <mssgle:LineSegment
-                    End="-116.333333333333,15.8866768759571" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-116.333333333333,15.8866768759571"
-                    Point2="-120.333333333333,15.8866768759571"
-                    Point3="-120.333333333333,19.8866768759571" />
-                  <mssgle:LineSegment
-                    End="-120.333333333333,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-159.985690104167,20.8866768759571,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\LoadPaciente\Load Paciente"
-          TopLeft="479,215" />
         <EdgeLayout
           Id="Package\LoadPaciente.Paths[Salida de entradas no coincidentes de búsqueda]"
           TopLeft="250.666666666667,182">
@@ -1284,35 +1258,48 @@ where [refTable].[idPaciente] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\LoadPaciente.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="210.333333333333,182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-120.333333333333,39"
+              Start="0,0"
+              End="-120.333333333333,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.8866768759571" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.8866768759571"
+                    Point2="0,15.8866768759571"
+                    Point3="-4,15.8866768759571" />
+                  <mssgle:LineSegment
+                    End="-116.333333333333,15.8866768759571" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-116.333333333333,15.8866768759571"
+                    Point2="-120.333333333333,15.8866768759571"
+                    Point3="-120.333333333333,19.8866768759571" />
+                  <mssgle:LineSegment
+                    End="-120.333333333333,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-159.985690104167,20.8866768759571,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\LoadPaciente\Get Paciente">
     <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\LoadPaciente\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[san].[DimPaciente]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1328,6 +1315,29 @@ where [refTable].[idPaciente] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\LoadPaciente\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[DimPaciente]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

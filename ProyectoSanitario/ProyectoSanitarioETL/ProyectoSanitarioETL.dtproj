@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">LAPTOP14</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAACAAAAAAAQZgAAAAEAACAAAACEx3pSm3fUyk1I2jJ9sd/qlmZ3I/8RLrs37+gZDcBfJgAAAAAOgAAAAAIAACAAAABPpWiHBZfBbyW8uEZ5Rz3HNceqtJD5kVlixReSXSnaDZAAAACTn13v4noaWcp7WjJTczvIBiRefBjMOyzE1aljyRP2w0adDldKPaFl/Sws4HduLDuRnN4OOHHDWKGxho9GlUJNWFrOZHklxWqTo6Ae7yFznhHUg/fIHghsdBvX1VMC/BFxNHrkrNDt8indkjwji9/p/dKNrL4Y34FxzDlaFFlWVuopAX27wBpN1Iq4i8pRHpZAAAAACIoOSKY3c7zHpFHZO3I1HMhtck9NfuS9iUDicN60hhkEy65hTibcFq3NgkwmZjSxpqI+5YXQDcntUdelYWp2Ng==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAACAAAAAAAQZgAAAAEAACAAAAB/Ysf6Ma708aR+ahi8zGEFtnp5Ob6TfyrUGE17scXyCgAAAAAOgAAAAAIAACAAAACAwrOQvhcHju+5WFXkd+iQjo+4FiyBiLtsFVX2W82xA5AAAACbaq9aIkpg+uW5uwwb7NQAqRNaroOM8Rt3w9VqBm8TBsyN3+Z9rJg98eMszBnLTRAC6NnUJu9+cAaunRuP+BzBIxgWjWuBCJNTLBnH3Z14K6dx5epQzwBZnmh9BZ7c4Y8cIlyR9zEZGiNi6ijmPRkQac9upSGEcigtYPeGYkBBtQH9LfRDIWd+pXzbeMGRlhhAAAAAdtIdODHq9te/phhhpo0Qq81zIdcdeC2YD50T7YzOUpJA/EdhOyzEV0W8iJ6WUFAJwkH8/AyHeR43oI4CKHis7g==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -46,10 +46,10 @@
                 <SSIS:Property SSIS:Name="Name">dimPaciente</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5C8B579B-30AC-47C2-B2FC-5A877CED9719}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7665E24A-0C20-4350-93E9-E10C590CB97E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -82,7 +82,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=localhost\MSSQLSERVER2;Initial Catalog=ProyectoSanitarioOLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-dimPaciente-{24A83B24-C6D6-4878-96BA-CDE099DE9B75}localhost\MSSQLSERVER2.ProyectoSanitarioOLTP;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Application Name=SSIS-dimPaciente-{24A83B24-C6D6-4878-96BA-CDE099DE9B75}source.ProyectoSanitarioOLTP;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -186,7 +186,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">localhost\MSSQLSERVER2</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">DESKTOP-JJM0ELC\VM_SQLSERVER2022</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -201,6 +201,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">sa</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -230,7 +231,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=localhost\MSSQLSERVER2;Initial Catalog=ProyectSanitarioDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-dimPaciente-{25B24524-A41D-480D-AB63-44BDEC6A5CCA}localhost\MSSQLSERVER2.ProyectSanitarioDW;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioDW;Provider=MSOLEDBSQL.1;Application Name=SSIS-dimPaciente-{25B24524-A41D-480D-AB63-44BDEC6A5CCA}target.ProyectSanitarioDW;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -290,7 +291,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">ProyectSanitarioDW</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">ProyectoSanitarioDW</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -334,7 +335,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">localhost\MSSQLSERVER2</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">DESKTOP-JJM0ELC\VM_SQLSERVER2022</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -349,6 +350,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">sa</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -360,10 +362,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">18</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2CADF2FE-A5DA-464E-B914-4501A8DA64E0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A7F0EFEC-D24D-4C40-AF8D-4E62D9043EC3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
