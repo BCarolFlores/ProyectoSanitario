@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{E55DB3DA-BC05-4A53-BA35-AB670A3364D6}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{15C2283F-F230-4660-956D-49941AB91A43}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADkzvwlKLoUYWbigFMDE7zB5j3MqWjY05jxFGwQLbw5mAAAAAAOgAAAAAIAACAAAAC7vgG3gi++hBSnJFSIJkGhRI1L4Mu3r7XkGRHa5JC7NxAAAABAvWgNdsDvM7fMklMtUnp/QAAAALJPgF+2UiOACCGRsO6urDw+ZRNFxXvVkklksTi3M9ksNNKm+UrM5U8jaP/+LJo9aji0AuT6lza3utOaoNNhfuE</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACS4A+3s7tyChKREawXEZPBRVA2m6R82Lg0YcO633SrWQAAAAAOgAAAAAIAACAAAABwTYtNB6caOrEhmlNXbAVtwFBKnJ3qq/oGhZni2cnuzRAAAABuSgkxx+SE2U9u2/+vUCrLQAAAAO3TlZ1PJOOgbXoWpfjUs85c7tw64Soj+fRj/oCc543qxhl3pS/Eg4yEXUFkehmqKg8x0xfYDcVp6MAFaxD5Z9A</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAART0QMwtHiJ7tmoBClby2E2nrnJsRPDSPvNpMBHKxJiQAAAAAOgAAAAAIAACAAAAD+RnUnCJ1Os4Oc61RS/gWbGNrDB1tMotrHjfZSNs39lRAAAAAglsvhFb+hEg+XZGeyCHCNQAAAABoardo9vB6zIBTLUkvw7nAWUTw7r63hP3e5vxIuAKpdPhPJScpFcwfJwyShUJp+IdGA5VYvEz3FATS6xkH6cEM</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACQtQBLCxQFKdq+qTOZ5PV15+3Ldc/E32s9KTi+lqmuSgAAAAAOgAAAAAIAACAAAACv44NYi6Sw0wonjtJdmVzgVo7n578K+OzpXkBhxJG+9hAAAABBnqdvSgJqlpKHrYbgmndmQAAAAE+EF+RQjfe9qGXYAEMNnHz1lOrerju/as1//IajdR1Xf7rvG5h2ze6V44GT9NrIF+zlXL65KG29JKdHJMiQdfA</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -86,6 +86,79 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[FechaInsert]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[FechaInsert]"
+                      name="FechaInsert"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Data Flow Task\Hospital"
               componentClassID="Microsoft.Lookup"
@@ -347,11 +420,11 @@ where [refTable].[idHospital] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital"
+              refId="Package\Data Flow Task\LlenamosDatos"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Load_fact_MedicoServicioHospital"
+              name="LlenamosDatos"
               usesDispositions="true"
               version="4">
               <properties>
@@ -404,7 +477,7 @@ where [refTable].[idHospital] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Connections[OleDbConnection]"
+                  refId="Package\Data Flow Task\LlenamosDatos.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[target.SanitarioDW]"
                   connectionManagerRefId="Package.ConnectionManagers[target.SanitarioDW]"
                   description="The OLE DB runtime connection used to access the database."
@@ -412,51 +485,51 @@ where [refTable].[idHospital] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input]"
+                  refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].Columns[idHospital]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].Columns[idHospital]"
                       cachedDataType="i4"
                       cachedName="idHospital"
-                      externalMetadataColumnId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoSK]"
-                      lineageId="Package\Data Flow Task\Medico.Outputs[Lookup Match Output].Columns[idHospital]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].Columns[idHospital1]"
-                      cachedDataType="i4"
-                      cachedName="idHospital"
-                      externalMetadataColumnId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].ExternalColumns[idHospitalSK]"
+                      externalMetadataColumnId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].ExternalColumns[idHospitalSK]"
                       lineageId="Package\Data Flow Task\Hospital.Outputs[Lookup Match Output].Columns[idHospital]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].Columns[idServicio]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].Columns[idMedico]"
+                      cachedDataType="i4"
+                      cachedName="idMedico"
+                      externalMetadataColumnId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoSK]"
+                      lineageId="Package\Data Flow Task\MedicoServicio.Outputs[Lookup Match Output].Columns[idMedico]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].Columns[idServicio]"
                       cachedDataType="i4"
                       cachedName="idServicio"
-                      externalMetadataColumnId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].ExternalColumns[idServicioSK]"
+                      externalMetadataColumnId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].ExternalColumns[idServicioSK]"
                       lineageId="Package\Data Flow Task\MedicoServicio.Outputs[Lookup Match Output].Columns[idServicio]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoServicioHospital]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoServicioHospital]"
                       dataType="i4"
                       name="idMedicoServicioHospital" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoSK]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoSK]"
                       dataType="i4"
                       name="idMedicoSK" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].ExternalColumns[idServicioSK]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].ExternalColumns[idServicioSK]"
                       dataType="i4"
                       name="idServicioSK" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].ExternalColumns[idHospitalSK]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].ExternalColumns[idHospitalSK]"
                       dataType="i4"
                       name="idHospitalSK" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input].ExternalColumns[idTiempo]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input].ExternalColumns[idTiempo]"
                       dataType="i4"
                       name="idTiempo" />
                   </externalMetadataColumns>
@@ -464,22 +537,195 @@ where [refTable].[idHospital] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Data Flow Task\LlenamosDatos.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\LlenamosDatos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\LlenamosDatos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\LlenamosDatos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\LookForExistingData"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LookForExistingData"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [san].[FactMedicoServicioHospital]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [san].[FactMedicoServicioHospital]) [refTable]
+where [refTable].[idHospitalSK] = ? and [refTable].[idMedicoSK] = ? and [refTable].[idServicioSK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idMedicoServicioHospital" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idMedicoSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idServicioSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idHospitalSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idTiempo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\Hospital.Outputs[Lookup Match Output].Columns[idHospital]};#{Package\Data Flow Task\Medico.Outputs[Lookup Match Output].Columns[idMedico]};#{Package\Data Flow Task\MedicoServicio.Outputs[Lookup Match Output].Columns[idServicio]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\LookForExistingData.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.SanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.SanitarioDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\LookForExistingData.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\LookForExistingData.Inputs[Lookup Input].Columns[idHospital]"
+                      cachedDataType="i4"
+                      cachedName="idHospital"
+                      lineageId="Package\Data Flow Task\Hospital.Outputs[Lookup Match Output].Columns[idHospital]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idHospitalSK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\LookForExistingData.Inputs[Lookup Input].Columns[idMedico]"
+                      cachedDataType="i4"
+                      cachedName="idMedico"
+                      lineageId="Package\Data Flow Task\Medico.Outputs[Lookup Match Output].Columns[idMedico]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idMedicoSK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\LookForExistingData.Inputs[Lookup Input].Columns[idServicio]"
+                      cachedDataType="i4"
+                      cachedName="idServicio"
+                      lineageId="Package\Data Flow Task\MedicoServicio.Outputs[Lookup Match Output].Columns[idServicio]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idServicioSK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\LookForExistingData.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\LookForExistingData.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\LookForExistingData.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\LookForExistingData.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\LookForExistingData.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\LookForExistingData.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\LookForExistingData.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\LookForExistingData.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\LookForExistingData.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\LookForExistingData.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1117,6 +1363,11 @@ where [refTable].[idMedico] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\LlenamosDatos.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Data Flow Task.Paths[Lookup Match Output]"
               endId="Package\Data Flow Task\Medico.Inputs[Lookup Input]"
               name="Lookup Match Output"
@@ -1128,9 +1379,14 @@ where [refTable].[idMedico] = ?</property>
               startId="Package\Data Flow Task\Medico.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
-              endId="Package\Data Flow Task\Load_fact_MedicoServicioHospital.Inputs[OLE DB Destination Input]"
+              endId="Package\Data Flow Task\LookForExistingData.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task\MedicoServicio.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\LookForExistingData.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
               endId="Package\Data Flow Task\Hospital.Inputs[Lookup Input]"
@@ -1426,43 +1682,109 @@ where [refTable].[idMedico] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="248,42"
-          Id="Package\Data Flow Task\Load_fact_MedicoServicioHospital"
-          TopLeft="254,356" />
+          Size="181,42"
+          Id="Package\Data Flow Task\LookForExistingData"
+          TopLeft="271,336" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
           TopLeft="651,312">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-273,44"
+              EndConnector="-289.5,24"
               Start="0,0"
-              End="-273,36.5">
+              End="-289.5,16.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18" />
+                    End="0,8" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18"
-                    Point2="0,22"
-                    Point3="-4,22" />
+                    Point1="0,8"
+                    Point2="0,12"
+                    Point3="-4,12" />
                   <mssgle:LineSegment
-                    End="-269,22" />
+                    End="-285.5,12" />
                   <mssgle:CubicBezierSegment
-                    Point1="-269,22"
-                    Point2="-273,22"
-                    Point3="-273,26" />
+                    Point1="-285.5,12"
+                    Point2="-289.5,12"
+                    Point3="-289.5,16" />
                   <mssgle:LineSegment
-                    End="-273,36.5" />
+                    End="-289.5,16.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-184.69138671875,27,96.3827734375,11.609375"
+              BoundingBox="-192.94138671875,17,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task\LlenamosDatos"
+          TopLeft="275,442" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="569,439" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="361.5,378">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="286.5,61"
+              Start="0,0"
+              End="286.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="282.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="282.5,30.5"
+                    Point2="286.5,30.5"
+                    Point3="286.5,34.5" />
+                  <mssgle:LineSegment
+                    End="286.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="87.44361328125,35.5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="569,461.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-139,0"
+              Start="0,0"
+              End="-131.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-131.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1551,7 +1873,30 @@ where [refTable].[idMedico] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Load_fact_MedicoServicioHospital">
+    design-time-name="Package\Data Flow Task\LookForExistingData">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[FactMedicoServicioHospital]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\LlenamosDatos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
