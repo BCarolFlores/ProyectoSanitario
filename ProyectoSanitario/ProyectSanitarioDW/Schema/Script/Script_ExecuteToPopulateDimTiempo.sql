@@ -10,4 +10,31 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-EXEC PopulateDimTiempo
+/*CARGAMOS DIM TIEMPO*/
+EXEC PopulateDimTiempo;
+
+/*CARGAMOS [PackageConfig] con 0 para todas las tablas */
+
+INSERT INTO [ProyectoSanitarioDW].[san].[PackageConfig] (TableName, LastRowVersion)  
+SELECT 'san.DimHospital', 0  
+WHERE NOT EXISTS (
+    SELECT 1 FROM [ProyectoSanitarioDW].[san].[PackageConfig] WHERE TableName = 'san.DimHospital'
+);
+
+INSERT INTO [ProyectoSanitarioDW].[san].[PackageConfig] (TableName, LastRowVersion)  
+SELECT 'san.DimMedico', 0  
+WHERE NOT EXISTS (
+    SELECT 1 FROM [ProyectoSanitarioDW].[san].[PackageConfig] WHERE TableName = 'san.DimMedico'
+);
+
+INSERT INTO [ProyectoSanitarioDW].[san].[PackageConfig] (TableName, LastRowVersion)  
+SELECT 'san.DimPaciente', 0  
+WHERE NOT EXISTS (
+    SELECT 1 FROM [ProyectoSanitarioDW].[san].[PackageConfig] WHERE TableName = 'san.DimPaciente'
+);
+
+INSERT INTO [ProyectoSanitarioDW].[san].[PackageConfig] (TableName, LastRowVersion)  
+SELECT 'san.DimServicio', 0  
+WHERE NOT EXISTS (
+    SELECT 1 FROM [ProyectoSanitarioDW].[san].[PackageConfig] WHERE TableName = 'san.DimServicio'
+);

@@ -46,6 +46,9 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunSqlCodeAnalysis>False</RunSqlCodeAnalysis>
+    <SqlCodeAnalysisRules>
+    </SqlCodeAnalysisRules>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
@@ -92,6 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Schema\Script\Script_ExecuteToPopulateDimTiempo.sql" />
-    <None Include="Schema\Script\PackageConfig.Data.sql.sql" />
+    <Compile Include="Schema\Script\PackageConfig.Data.sql" />
   </ItemGroup>
 </Project>
