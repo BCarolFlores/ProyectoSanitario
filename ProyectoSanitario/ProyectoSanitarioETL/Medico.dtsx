@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/9/2025 4:19:37 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Medico"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{DE4D0675-0DB0-4D2B-A826-DFB7288DEEAD}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{80A064D8-8FA2-4BE8-AF79-B08DCF2CC9F5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Sanitario;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Medico-{2DB91E72-811B-4F78-BD9E-1A1BC1B948C4}localhost.Sanitario;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Medico-{2DB91E72-811B-4F78-BD9E-1A1BC1B948C4}localhost.Sanitario;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACa4D7OGlSi8lUygrx303cri4w9Q41s49LmiNexIz6JYgAAAAAOgAAAAAIAACAAAADbXW3/XX2V69cSxmNKN6L8vTgZfmAAb+vLbonOnVvsyRAAAAD+vnlN5ch0dioddBQAhLFeQAAAAFs17c2iue6fc9yEEKsR0OkAFUCjngkPwIJ4dV/bfxWcQRulr7kTxyr+jzl1aNo1v+oSc4zk4l8TO7i8oNdzBlU</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=SanitarioDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Medico-{20AEA410-2D92-4096-904C-B1A7F93F31B0}localhost.SanitarioDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioDW;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Medico-{20AEA410-2D92-4096-904C-B1A7F93F31B0}localhost.SanitarioDW;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADBCAjnoGQ8kMWb6oK9KMG7x4NT9wjjLQT6/r3yodxdOQAAAAAOgAAAAAIAACAAAABtopgcT24F47hexUgjmQ9KOv+SBkoyNxp92rx0/bSbuBAAAABl5QDsKqg1YKqS9UKoxAjSQAAAABLcel4WIGeg7SIfqQlkV1vkeTHohzkFCK9YppBBwwPJS0U9d/o252Pwnx83/Ebwk6ApII5xB7ivYoJk8T6/IjQ</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -970,17 +980,21 @@ where [refTable].[idMedico] = ?</property>
       DTS:To="Package\Updater Config" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Clear-up staging"
+          TopLeft="223,160" />
         <NodeLayout
           Size="209,42"
           Id="Package\Get Database RowVersion"
@@ -989,6 +1003,18 @@ where [refTable].[idMedico] = ?</property>
           Size="180,42"
           Id="Package\Get LastRowVersion"
           TopLeft="225,89" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Medico"
+          TopLeft="227,236" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Sync Staging"
+          TopLeft="220,308" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Updater Config"
+          TopLeft="222,380" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="317.75,59">
@@ -1011,10 +1037,6 @@ where [refTable].[idMedico] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Clear-up staging"
-          TopLeft="223,160" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="315,131">
@@ -1049,10 +1071,6 @@ where [refTable].[idMedico] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load Medico"
-          TopLeft="227,236" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="300.5,202">
@@ -1075,10 +1093,6 @@ where [refTable].[idMedico] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Sync Staging"
-          TopLeft="220,308" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="295,278">
@@ -1101,10 +1115,6 @@ where [refTable].[idMedico] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="153,42"
-          Id="Package\Updater Config"
-          TopLeft="222,380" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
           TopLeft="295.25,350">
@@ -1140,9 +1150,17 @@ where [refTable].[idMedico] = ?</property>
           Id="Package\Load Medico\Get Medico"
           TopLeft="273,34" />
         <NodeLayout
+          Size="144,42"
+          Id="Package\Load Medico\Load Staging"
+          TopLeft="244,191" />
+        <NodeLayout
           Size="129,42"
           Id="Package\Load Medico\Búsqueda"
           TopLeft="271,108" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Medico\Load Medico"
+          TopLeft="641,108" />
         <EdgeLayout
           Id="Package\Load Medico.Paths[Salida de origen de OLE DB]"
           TopLeft="338,76">
@@ -1165,10 +1183,30 @@ where [refTable].[idMedico] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Load Medico\Load Staging"
-          TopLeft="244,191" />
+        <EdgeLayout
+          Id="Package\Load Medico.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="400,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="241,0"
+              Start="0,0"
+              End="233.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="233.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="9.8609765625,5,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Medico.Paths[Salida de entradas coincidentes de búsqueda]"
           TopLeft="335.5,150">
@@ -1205,34 +1243,6 @@ where [refTable].[idMedico] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load Medico\Load Medico"
-          TopLeft="641,108" />
-        <EdgeLayout
-          Id="Package\Load Medico.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="400,129">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="241,0"
-              Start="0,0"
-              End="233.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="233.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="9.8609765625,5,213.778046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1250,29 +1260,6 @@ where [refTable].[idMedico] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Medico\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[san].[DimMedico]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Load Medico\Load Staging">
     <Properties>
       <Property>
@@ -1282,6 +1269,29 @@ where [refTable].[idMedico] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Medico\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[DimMedico]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

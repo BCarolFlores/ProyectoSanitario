@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">LAPTOP14</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAACAAAAAAAQZgAAAAEAACAAAAB/Ysf6Ma708aR+ahi8zGEFtnp5Ob6TfyrUGE17scXyCgAAAAAOgAAAAAIAACAAAACAwrOQvhcHju+5WFXkd+iQjo+4FiyBiLtsFVX2W82xA5AAAACbaq9aIkpg+uW5uwwb7NQAqRNaroOM8Rt3w9VqBm8TBsyN3+Z9rJg98eMszBnLTRAC6NnUJu9+cAaunRuP+BzBIxgWjWuBCJNTLBnH3Z14K6dx5epQzwBZnmh9BZ7c4Y8cIlyR9zEZGiNi6ijmPRkQac9upSGEcigtYPeGYkBBtQH9LfRDIWd+pXzbeMGRlhhAAAAAdtIdODHq9te/phhhpo0Qq81zIdcdeC2YD50T7YzOUpJA/EdhOyzEV0W8iJ6WUFAJwkH8/AyHeR43oI4CKHis7g==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAACAAAAAAAQZgAAAAEAACAAAABHajb7zODLMImHY5aUHot9tYIYOSBTvtT2TcTlekLYgwAAAAAOgAAAAAIAACAAAACB7KG0B+xTr7tfwsY+lUEr4ybAp5TxVQGlqbT3MuZ6t5AAAAC+IzMqs/HSWKYVfAydi3JvwThepKp+KErFNd2lgEfcfRU+4emtzHDvuzAm0wbBVTaKTD1XZlZgq/9SK2waT1L0ODeGenOOr0ppKvynm53x/4NqYU395cl19yzfPjSt65TAlEvoOYemc6oAsu502WWIRtRVmgGDVYuRLCaoW5s2NypThmd3GewK1PZD/FjJ/M1AAAAAVdhAXgHlKB+qJaJYbZe+9XuR9rm8LaqkA1L8VtNYXJTnUWFopay10+RUTHnvN32BBSZMFJ45p+ESszO66Z22qA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -46,10 +46,10 @@
                 <SSIS:Property SSIS:Name="Name">dimPaciente</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7665E24A-0C20-4350-93E9-E10C590CB97E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F1B1767D-C64A-4C4D-8448-9175A1D2BD09}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -992,10 +992,10 @@
                 <SSIS:Property SSIS:Name="Name">Medico</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">22</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">23</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{DE4D0675-0DB0-4D2B-A826-DFB7288DEEAD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{80A064D8-8FA2-4BE8-AF79-B08DCF2CC9F5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1028,7 +1028,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=localhost;Initial Catalog=Sanitario;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Medico-{2DB91E72-811B-4F78-BD9E-1A1BC1B948C4}localhost.Sanitario;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Medico-{2DB91E72-811B-4F78-BD9E-1A1BC1B948C4}localhost.Sanitario;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1088,7 +1088,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Sanitario</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">ProyectoSanitarioOLTP</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1132,7 +1132,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">localhost</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">DESKTOP-JJM0ELC\VM_SQLSERVER2022</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1147,6 +1147,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">sa</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1176,7 +1177,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=localhost;Initial Catalog=SanitarioDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Medico-{20AEA410-2D92-4096-904C-B1A7F93F31B0}localhost.SanitarioDW;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioDW;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Medico-{20AEA410-2D92-4096-904C-B1A7F93F31B0}localhost.SanitarioDW;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1236,7 +1237,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SanitarioDW</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">ProyectoSanitarioDW</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1280,7 +1281,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">localhost</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">DESKTOP-JJM0ELC\VM_SQLSERVER2022</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1295,6 +1296,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">sa</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
