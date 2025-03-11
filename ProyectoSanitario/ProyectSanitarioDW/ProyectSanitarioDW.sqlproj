@@ -85,8 +85,7 @@
     <Build Include="Schema\Tables\staging\Stating.Hospital.sql" />
     <Build Include="Schema\Stored Procedures\DW_MergeDimHospital.sql" />
     <Build Include="Schema\Script\PackageConfig.Data.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Schema\Script\Fill_DimTiempo.sql" />
+    <Build Include="Schema\Script\Insert_seedData_DimTiempo.sql" />
+    <Build Include="Schema\Stored Procedures\GetVisitChangeByRowVersion .sql" />
   </ItemGroup>
 </Project>
