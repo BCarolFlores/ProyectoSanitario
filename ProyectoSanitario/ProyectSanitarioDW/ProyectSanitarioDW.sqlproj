@@ -95,6 +95,5 @@
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Schema\Script\Script_ExecuteToPopulateDimTiempo.sql" />
-    <Compile Include="Schema\Script\PackageConfig.Data.sql" />
   </ItemGroup>
 </Project>
