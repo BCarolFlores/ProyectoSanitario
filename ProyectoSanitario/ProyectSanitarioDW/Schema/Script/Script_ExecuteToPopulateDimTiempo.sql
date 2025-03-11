@@ -38,3 +38,10 @@ SELECT 'san.DimServicio', 0
 WHERE NOT EXISTS (
     SELECT 1 FROM [ProyectoSanitarioDW].[san].[PackageConfig] WHERE TableName = 'san.DimServicio'
 );
+
+
+INSERT INTO [ProyectoSanitarioDW].[san].[PackageConfig] (TableName, LastRowVersion)  
+SELECT 'san.FactMedicoServicioHospital', 0  
+WHERE NOT EXISTS (
+    SELECT 1 FROM [ProyectoSanitarioDW].[san].[PackageConfig] WHERE TableName = 'san.FactMedicoServicioHospital'
+);
