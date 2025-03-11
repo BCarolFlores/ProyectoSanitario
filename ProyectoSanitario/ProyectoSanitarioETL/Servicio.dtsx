@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/8/2025 2:04:55 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{7801DB09-E407-4203-A89B-FDEABDDE2236}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{AB80FB79-C034-4CA2-861B-5D0288FDD027}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Sanitario;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{82ECD8E2-B731-48C0-A4F9-7E338BF42DEA}localhost.Sanitario;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Package1-{82ECD8E2-B731-48C0-A4F9-7E338BF42DEA}localhost.Sanitario;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADHbT3hA8B6ucVSNiYuJ9+9H5mKhmosZmskVeY1BGs2/wAAAAAOgAAAAAIAACAAAAA9l9xVsFnT66ze/UlywlKfOZPDuoq5+s1BazWyQ9tkphAAAACFAvxV/TApO3l0EJp1+eF+QAAAAH+E/C8hr5sMVc2ouFCJKUPcVoWnWBRG9rvfKHspAouMvAWqjuv5ERLId6Pj2pOyKEXtHgZp1j9EknMFrPWRdtM</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=SanitarioDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{85E97F8D-F125-4582-8698-7A9B8ABDF2EF}localhost.SanitarioDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioDW;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Package1-{85E97F8D-F125-4582-8698-7A9B8ABDF2EF}localhost.SanitarioDW;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADoVspoxqVfYNtCnR4iA1Nznem7yJ8WdBJasu29v5MVaQAAAAAOgAAAAAIAACAAAAAMTqYNQD+OJMco5aU/QnrieDSUw8GmBkGOLvSbFpp61hAAAABTpDDXW6vylodmEs0rMcJ2QAAAAG3xIpV/2FYi0jZXWIeKK0xpLlxe8XpKPaStS1MPI9i+5RmmPdW042yT/S1Pid3FgjkorxQRqrthkrBsZXK27Ws</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -386,6 +396,16 @@ where [refTable].[idServicio] = ?</property>
                       lineageId="Package\Load Servicio\Get Servicio.Outputs[Salida de origen de OLE DB].Columns[Comentario]"
                       name="Comentario"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Servicio\Get Servicio.Outputs[Salida de origen de OLE DB].Columns[RowVersion]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Servicio\Get Servicio.Outputs[Salida de origen de OLE DB].ExternalColumns[RowVersion]"
+                      length="8"
+                      lineageId="Package\Load Servicio\Get Servicio.Outputs[Salida de origen de OLE DB].Columns[RowVersion]"
+                      name="RowVersion"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -403,6 +423,11 @@ where [refTable].[idServicio] = ?</property>
                       dataType="wstr"
                       length="255"
                       name="Comentario" />
+                    <externalMetadataColumn
+                      refId="Package\Load Servicio\Get Servicio.Outputs[Salida de origen de OLE DB].ExternalColumns[RowVersion]"
+                      dataType="bytes"
+                      length="8"
+                      name="RowVersion" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -427,6 +452,12 @@ where [refTable].[idServicio] = ?</property>
                       length="255"
                       lineageId="Package\Load Servicio\Get Servicio.Outputs[Salida de error de origen de OLE DB].Columns[Comentario]"
                       name="Comentario" />
+                    <outputColumn
+                      refId="Package\Load Servicio\Get Servicio.Outputs[Salida de error de origen de OLE DB].Columns[RowVersion]"
+                      dataType="bytes"
+                      length="8"
+                      lineageId="Package\Load Servicio\Get Servicio.Outputs[Salida de error de origen de OLE DB].Columns[RowVersion]"
+                      name="RowVersion" />
                     <outputColumn
                       refId="Package\Load Servicio\Get Servicio.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -833,12 +864,12 @@ where [refTable].[idServicio] = ?</property>
       DTS:To="Package\Update Config" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -860,6 +891,14 @@ where [refTable].[idServicio] = ?</property>
           Size="146,42"
           Id="Package\Load Servicio"
           TopLeft="252,216" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Syn Staging"
+          TopLeft="242,284" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Update Config"
+          TopLeft="235,365" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="332.75,45">
@@ -938,14 +977,6 @@ where [refTable].[idServicio] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Syn Staging"
-          TopLeft="242,284" />
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Update Config"
-          TopLeft="235,365" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="325,258">
@@ -1015,6 +1046,14 @@ where [refTable].[idServicio] = ?</property>
           Id="Package\Load Servicio\Get Servicio"
           TopLeft="262,46" />
         <NodeLayout
+          Size="144,42"
+          Id="Package\Load Servicio\Load Staging"
+          TopLeft="109,203" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Load Servicio\Load DimServicio"
+          TopLeft="619,131" />
+        <NodeLayout
           Size="129,42"
           Id="Package\Load Servicio\Búsqueda"
           TopLeft="258,124" />
@@ -1052,10 +1091,30 @@ where [refTable].[idServicio] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Load Servicio\Load Staging"
-          TopLeft="109,203" />
+        <EdgeLayout
+          Id="Package\Load Servicio.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="387,148.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="232,0"
+              Start="0,0"
+              End="224.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="224.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="5.3609765625,5,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Servicio.Paths[Salida de entradas coincidentes de búsqueda]"
           TopLeft="322.5,166">
@@ -1092,63 +1151,12 @@ where [refTable].[idServicio] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Load Servicio\Load DimServicio"
-          TopLeft="619,131" />
-        <EdgeLayout
-          Id="Package\Load Servicio.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="387,148.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="232,0"
-              Start="0,0"
-              End="224.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="224.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="5.3609765625,5,213.778046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Servicio\Get Servicio">
     <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Servicio\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[san].[DimServicio]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1177,6 +1185,29 @@ where [refTable].[idServicio] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Servicio\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[DimServicio]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

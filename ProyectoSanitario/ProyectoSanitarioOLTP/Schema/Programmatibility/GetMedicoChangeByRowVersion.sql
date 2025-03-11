@@ -1,4 +1,4 @@
-﻿create procedure [dbo].[GetMedicoChangeByRowVersion] (
+﻿create procedure [san].[GetMedicoChangeByRowVersion] (
 @startRow BIGINT
 ,@endRow BIGINT
 )AS

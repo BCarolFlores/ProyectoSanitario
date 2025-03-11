@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Medico"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{80A064D8-8FA2-4BE8-AF79-B08DCF2CC9F5}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{D0060633-5CAC-45ED-BC5A-5DA121C14AD8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACa4D7OGlSi8lUygrx303cri4w9Q41s49LmiNexIz6JYgAAAAAOgAAAAAIAACAAAADbXW3/XX2V69cSxmNKN6L8vTgZfmAAb+vLbonOnVvsyRAAAAD+vnlN5ch0dioddBQAhLFeQAAAAFs17c2iue6fc9yEEKsR0OkAFUCjngkPwIJ4dV/bfxWcQRulr7kTxyr+jzl1aNo1v+oSc4zk4l8TO7i8oNdzBlU</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADKfknqxxjLCnNhIj4ENKT3ehHU5jVxxIgirxw5uli0YQAAAAAOgAAAAAIAACAAAABZynbkhNB2jHRbL/jMoDgA2MSTsfz/esBPT2+4WxPjGRAAAABUfxhw2+lmHzIn+ZzyNCiPQAAAAOgIp+NUTKr428riDqeyyCDOQ5n2Y0FMhb1ERkPmHCDpIzrkXKojX04zUgGwzkPrDkXhFpit4qZFVHJ6lMv5YxA</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADBCAjnoGQ8kMWb6oK9KMG7x4NT9wjjLQT6/r3yodxdOQAAAAAOgAAAAAIAACAAAABtopgcT24F47hexUgjmQ9KOv+SBkoyNxp92rx0/bSbuBAAAABl5QDsKqg1YKqS9UKoxAjSQAAAABLcel4WIGeg7SIfqQlkV1vkeTHohzkFCK9YppBBwwPJS0U9d/o252Pwnx83/Ebwk6ApII5xB7ivYoJk8T6/IjQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACiWu/LUxITqziwTWLsEfyFh2LwrFCiHVYIA95pO46u8gAAAAAOgAAAAAIAACAAAAAuzNsjaPzphQbDJjwneuv5GvQc8gGTFRP6ddPi4+8NoxAAAABd2JPb2Kzu2fOgAiIvstJCQAAAAGrnVYxTEHkUg8bP2qAdb4y+/tceZhVEq4flb6O/CuHqqIXN9Zz6ZJ85B6fMaScfRl/N8NKXXGDwTUIzTEwPNy8</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -329,7 +329,7 @@ where [refTable].[idMedico] = ?</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE  [dbo].[GetMedicoChangeByRowVersion] @startRow =? , @endRow =?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE  [san].[GetMedicoChangeByRowVersion] @startRow =? , @endRow =?</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -431,6 +431,16 @@ where [refTable].[idMedico] = ?</property>
                       lineageId="Package\Load Medico\Get Medico.Outputs[Salida de origen de OLE DB].Columns[EsDirector]"
                       name="EsDirector"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Medico\Get Medico.Outputs[Salida de origen de OLE DB].Columns[RowVersion]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Medico\Get Medico.Outputs[Salida de origen de OLE DB].ExternalColumns[RowVersion]"
+                      length="8"
+                      lineageId="Package\Load Medico\Get Medico.Outputs[Salida de origen de OLE DB].Columns[RowVersion]"
+                      name="RowVersion"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -465,6 +475,11 @@ where [refTable].[idMedico] = ?</property>
                       refId="Package\Load Medico\Get Medico.Outputs[Salida de origen de OLE DB].ExternalColumns[EsDirector]"
                       dataType="bool"
                       name="EsDirector" />
+                    <externalMetadataColumn
+                      refId="Package\Load Medico\Get Medico.Outputs[Salida de origen de OLE DB].ExternalColumns[RowVersion]"
+                      dataType="bytes"
+                      length="8"
+                      name="RowVersion" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -510,6 +525,12 @@ where [refTable].[idMedico] = ?</property>
                       dataType="bool"
                       lineageId="Package\Load Medico\Get Medico.Outputs[Salida de error de origen de OLE DB].Columns[EsDirector]"
                       name="EsDirector" />
+                    <outputColumn
+                      refId="Package\Load Medico\Get Medico.Outputs[Salida de error de origen de OLE DB].Columns[RowVersion]"
+                      dataType="bytes"
+                      length="8"
+                      lineageId="Package\Load Medico\Get Medico.Outputs[Salida de error de origen de OLE DB].Columns[RowVersion]"
+                      name="RowVersion" />
                     <outputColumn
                       refId="Package\Load Medico\Get Medico.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
