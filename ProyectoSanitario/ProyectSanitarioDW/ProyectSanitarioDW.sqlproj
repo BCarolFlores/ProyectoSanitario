@@ -87,5 +87,7 @@
     <Build Include="Schema\Script\PackageConfig.Data.sql" />
     <Build Include="Schema\Script\Insert_seedData_DimTiempo.sql" />
     <Build Include="Schema\Stored Procedures\GetVisitChangeByRowVersion .sql" />
+    <Build Include="Schema\Tables\staging\Staging.Paciente.sql" />
+    <Build Include="Schema\Tables\staging\Staging.Visita.sql" />
   </ItemGroup>
 </Project>
