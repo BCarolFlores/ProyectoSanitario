@@ -22,6 +22,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <PermissionSet>UNSAFE</PermissionSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -84,10 +85,13 @@
     <Build Include="Schema\Stored Procedures\DW_MergeDimPaciente.sql" />
     <Build Include="Schema\Tables\staging\Stating.Hospital.sql" />
     <Build Include="Schema\Stored Procedures\DW_MergeDimHospital.sql" />
-    <Build Include="Schema\Script\PackageConfig.Data.sql" />
-    <Build Include="Schema\Script\Insert_seedData_DimTiempo.sql" />
     <Build Include="Schema\Stored Procedures\GetVisitChangeByRowVersion .sql" />
     <Build Include="Schema\Tables\staging\Staging.Paciente.sql" />
     <Build Include="Schema\Tables\staging\Staging.Visita.sql" />
+    <Build Include="Schema\Stored Procedures\DW_PopulateDimTiempo.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Schema\Script\Script_ExecuteToPopulateDimTiempo.sql" />
+    <None Include="Schema\Script\PackageConfig.Data.sql.sql" />
   </ItemGroup>
 </Project>
