@@ -1,0 +1,1907 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/11/2025 6:15:24 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-JJM0ELC"
+  DTS:CreatorName="DESKTOP-JJM0ELC\vm"
+  DTS:DTSID="{2D58DD27-352A-4F63-BCEE-46B6AC48E301}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{12A84413-5E96-496D-9EBD-250020CBCAF6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Source.Sanitario]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{82ECD8E2-B731-48C0-A4F9-7E338BF42DEA}"
+      DTS:ObjectName="Source.Sanitario">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Package1-{82ECD8E2-B731-48C0-A4F9-7E338BF42DEA}localhost.Sanitario;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB/0PMjeJ0VXBJPVLVvGCDSP+y9SSqiuH7iZ2augqiyKQAAAAAOgAAAAAIAACAAAACuauTWgVaMT+iQG3Tr9O46gSFkIGUkwtf01MwNyxRQXBAAAABNTqIuhXj1XnzlGsQJcaS0QAAAAGHo9WqasHrdd0j23jxL5BvwqR0tH+4bqgBzLXP+ezEviBhm0w4hD4Rx/EmFC1xRFO6+Cb2uHVKsdA6yGMyOAmQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[target.SanitarioDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{20AEA410-2D92-4096-904C-B1A7F93F31B0}"
+      DTS:ObjectName="target.SanitarioDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioDW;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Medico-{20AEA410-2D92-4096-904C-B1A7F93F31B0}localhost.SanitarioDW;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA1WTEGOXU5dvBVSe0rOvlCEj3Rmfq2fnNCAM6MzqbNOwAAAAAOgAAAAAIAACAAAAAbJvBV7PRfVOa/QWSscNszTpk/GCUoH5+jLzzWE3zzmBAAAABqa9LnhyyfFsJlgrtSdemVQAAAAKfBLWVfp1vdQMUsj6nM/D3qs2+LFYxUkoNW6NTdAzxfb+qygf3sv7XJwc71iqfa6b/YuMr4Q39LAvPzqZ+GrvQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load_Fact"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B476669C-D420-407E-A17E-959FC05CCE4B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load_Fact"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load_Fact\Hosptial"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Hosptial"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [san].[DimHospital]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [san].[DimHospital]) [refTable]
+where [refTable].[idHospital] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idHospitalSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idHospital" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="codHospital" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nombre" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Ciudad" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Telefono" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DirectorDNI" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RowVersion" dataType="DT_BYTES" length="8" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idHospital]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_Fact\Hosptial.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.SanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.SanitarioDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load_Fact\Hosptial.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load_Fact\Hosptial.Inputs[Lookup Input].Columns[idHospital]"
+                      cachedDataType="i4"
+                      cachedName="idHospital"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idHospital]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idHospital</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load_Fact\Hosptial.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load_Fact\Hosptial.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\Hosptial.Outputs[Lookup Match Output].Columns[idHospitalSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Hosptial.Outputs[Lookup Match Output].Columns[idHospitalSK]"
+                      name="idHospitalSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">idHospitalSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\Hosptial.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load_Fact\Hosptial.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\Hosptial.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load_Fact\Hosptial.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\Hosptial.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\Hosptial.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_Fact\Hosptial.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\Hosptial.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load_Fact\load Source Historia Clinica"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="load Source Historia Clinica"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[san].[HistoriasClinica]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_Fact\load Source Historia Clinica.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source.Sanitario]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source.Sanitario]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idHist]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].ExternalColumns[idHist]"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idHist]"
+                      name="idHist"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[RowVersion]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].ExternalColumns[RowVersion]"
+                      length="8"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[RowVersion]"
+                      name="RowVersion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[codHist]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].ExternalColumns[codHist]"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[codHist]"
+                      name="codHist"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idPaciente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].ExternalColumns[idPaciente]"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idPaciente]"
+                      name="idPaciente"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].ExternalColumns[idHist]"
+                      dataType="i4"
+                      name="idHist" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].ExternalColumns[RowVersion]"
+                      dataType="bytes"
+                      length="8"
+                      name="RowVersion" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].ExternalColumns[codHist]"
+                      dataType="i4"
+                      name="codHist" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].ExternalColumns[idPaciente]"
+                      dataType="i4"
+                      name="idPaciente" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[idHist]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[idHist]"
+                      name="idHist" />
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[codHist]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[codHist]"
+                      name="codHist" />
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[idPaciente]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[idPaciente]"
+                      name="idPaciente" />
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[RowVersion]"
+                      dataType="bytes"
+                      length="8"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[RowVersion]"
+                      name="RowVersion" />
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load_Fact\Medico"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Medico"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [san].[DimMedico]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [san].[DimMedico]) [refTable]
+where [refTable].[idMedico] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idMedicoSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idMedico" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DNI" dataType="DT_WSTR" length="12" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nombre" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Apellidos" dataType="DT_WSTR" length="110" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FechaNacimiento" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EsDirector" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RowVersion" dataType="DT_BYTES" length="8" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idMedico]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_Fact\Medico.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.SanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.SanitarioDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load_Fact\Medico.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load_Fact\Medico.Inputs[Lookup Input].Columns[idMedico]"
+                      cachedDataType="i4"
+                      cachedName="idMedico"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idMedico]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idMedico</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load_Fact\Medico.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load_Fact\Medico.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\Medico.Outputs[Lookup Match Output].Columns[idMedicoSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Medico.Outputs[Lookup Match Output].Columns[idMedicoSK]"
+                      name="idMedicoSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">idMedicoSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\Medico.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load_Fact\Medico.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\Medico.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load_Fact\Medico.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\Medico.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\Medico.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_Fact\Medico.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\Medico.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load_Fact\NoMatchingOutput"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="NoMatchingOutput"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [san].[FactVisita]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [san].[FactVisita]) [refTable]
+where [refTable].[idPacienteSK] = ? and [refTable].[idVisitaSK] = ? and [refTable].[idHospitalSK] = ? and [refTable].[idServicioSK] = ? and [refTable].[idMedicoSK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idVisitaSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idPacienteSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idMedicoSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idHospitalSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idServicioSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idTiempo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FechaVisita" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NumeroHabitacion" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Diagnostico" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Tratamiento" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FechaAlta" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="codHist" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idPaciente]};#{Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idVisita]};#{Package\Load_Fact\Hosptial.Outputs[Lookup Match Output].Columns[idHospitalSK]};#{Package\Load_Fact\Servicio.Outputs[Lookup Match Output].Columns[idServicioSK]};#{Package\Load_Fact\Medico.Outputs[Lookup Match Output].Columns[idMedicoSK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_Fact\NoMatchingOutput.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.SanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.SanitarioDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input].Columns[idHospitalSK]"
+                      cachedDataType="i4"
+                      cachedName="idHospitalSK"
+                      lineageId="Package\Load_Fact\Hosptial.Outputs[Lookup Match Output].Columns[idHospitalSK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idHospitalSK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input].Columns[idServicioSK]"
+                      cachedDataType="i4"
+                      cachedName="idServicioSK"
+                      lineageId="Package\Load_Fact\Servicio.Outputs[Lookup Match Output].Columns[idServicioSK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idServicioSK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input].Columns[idMedicoSK]"
+                      cachedDataType="i4"
+                      cachedName="idMedicoSK"
+                      lineageId="Package\Load_Fact\Medico.Outputs[Lookup Match Output].Columns[idMedicoSK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idMedicoSK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input].Columns[idPaciente]"
+                      cachedDataType="i4"
+                      cachedName="idPaciente"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idPaciente]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idPacienteSK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input].Columns[idVisita]"
+                      cachedDataType="i4"
+                      cachedName="idVisita"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idVisita]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idVisitaSK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load_Fact\NoMatchingOutput.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\NoMatchingOutput.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\NoMatchingOutput.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\NoMatchingOutput.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\NoMatchingOutput.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_Fact\NoMatchingOutput.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\NoMatchingOutput.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load_Fact\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[san].[FactVisita]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_Fact\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.SanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.SanitarioDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[codHist]"
+                      cachedDataType="i4"
+                      cachedName="codHist"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[codHist]"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[codHist]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Diagnostico]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Diagnostico"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diagnostico]"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[Diagnostico]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Tratamiento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Tratamiento"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[Tratamiento]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumeroHabitacion]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="NumeroHabitacion"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumeroHabitacion]"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[NumeroHabitacion]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FechaAlta]"
+                      cachedDataType="dbDate"
+                      cachedName="FechaAlta"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaAlta]"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[FechaAlta]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idHospitalSK]"
+                      cachedDataType="i4"
+                      cachedName="idHospitalSK"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idHospitalSK]"
+                      lineageId="Package\Load_Fact\Hosptial.Outputs[Lookup Match Output].Columns[idHospitalSK]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idServicioSK]"
+                      cachedDataType="i4"
+                      cachedName="idServicioSK"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idServicioSK]"
+                      lineageId="Package\Load_Fact\Servicio.Outputs[Lookup Match Output].Columns[idServicioSK]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idMedicoSK]"
+                      cachedDataType="i4"
+                      cachedName="idMedicoSK"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoSK]"
+                      lineageId="Package\Load_Fact\Medico.Outputs[Lookup Match Output].Columns[idMedicoSK]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idPaciente]"
+                      cachedDataType="i4"
+                      cachedName="idPaciente"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idPacienteSK]"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idPaciente]" />
+                    <inputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FechaHospitalizacion]"
+                      cachedDataType="dbDate"
+                      cachedName="FechaHospitalizacion"
+                      externalMetadataColumnId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVisita]"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[FechaHospitalizacion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idVisitaSK]"
+                      dataType="i4"
+                      name="idVisitaSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idPacienteSK]"
+                      dataType="i4"
+                      name="idPacienteSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idMedicoSK]"
+                      dataType="i4"
+                      name="idMedicoSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idHospitalSK]"
+                      dataType="i4"
+                      name="idHospitalSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idServicioSK]"
+                      dataType="i4"
+                      name="idServicioSK" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idTiempo]"
+                      dataType="i4"
+                      name="idTiempo" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaVisita]"
+                      dataType="dbDate"
+                      name="FechaVisita" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumeroHabitacion]"
+                      dataType="wstr"
+                      length="255"
+                      name="NumeroHabitacion" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diagnostico]"
+                      dataType="wstr"
+                      length="255"
+                      name="Diagnostico" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tratamiento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Tratamiento" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaAlta]"
+                      dataType="wstr"
+                      length="255"
+                      name="FechaAlta" />
+                    <externalMetadataColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[codHist]"
+                      dataType="i4"
+                      name="codHist" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load_Fact\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_Fact\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load_Fact\Servicio"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Servicio"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [san].[DimServicio]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [san].[DimServicio]) [refTable]
+where [refTable].[idServicio] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idServicioSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idServicio" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NombreCompleto" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Comentario" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RowVersion" dataType="DT_BYTES" length="8" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idServicio]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_Fact\Servicio.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[target.SanitarioDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[target.SanitarioDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load_Fact\Servicio.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load_Fact\Servicio.Inputs[Lookup Input].Columns[idServicio]"
+                      cachedDataType="i4"
+                      cachedName="idServicio"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idServicio]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idServicio</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load_Fact\Servicio.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load_Fact\Servicio.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\Servicio.Outputs[Lookup Match Output].Columns[idServicioSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Servicio.Outputs[Lookup Match Output].Columns[idServicioSK]"
+                      name="idServicioSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">idServicioSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\Servicio.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load_Fact\Servicio.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\Servicio.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load_Fact\Servicio.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\Servicio.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\Servicio.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_Fact\Servicio.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\Servicio.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load_Fact\Visita"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Visita"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [san].[Visita]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [san].[Visita]) [refTable]
+where [refTable].[idHist] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idVisita" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idHist" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FechaHora" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idHospital" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idServicio" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="idMedico" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Diagnostico" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Tratamiento" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Ingreso" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NumeroHabitacion" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FechaAlta" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FechaHospitalizacion" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RowVersion" dataType="DT_BYTES" length="8" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idHist]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_Fact\Visita.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source.Sanitario]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source.Sanitario]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load_Fact\Visita.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load_Fact\Visita.Inputs[Lookup Input].Columns[idHist]"
+                      cachedDataType="i4"
+                      cachedName="idHist"
+                      lineageId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output].Columns[idHist]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idHist</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load_Fact\Visita.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idVisita]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idVisita]"
+                      name="idVisita"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">idVisita</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[FechaHora]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[FechaHora]"
+                      name="FechaHora"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">FechaHora</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idHospital]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idHospital]"
+                      name="idHospital"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">idHospital</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idServicio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idServicio]"
+                      name="idServicio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">idServicio</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idMedico]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idMedico]"
+                      name="idMedico"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">idMedico</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[Diagnostico]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[Diagnostico]"
+                      name="Diagnostico"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Diagnostico</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[Tratamiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[Tratamiento]"
+                      name="Tratamiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Tratamiento</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[Ingreso]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[Ingreso]"
+                      name="Ingreso"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Ingreso</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[NumeroHabitacion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="10"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[NumeroHabitacion]"
+                      name="NumeroHabitacion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">NumeroHabitacion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[FechaAlta]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[FechaAlta]"
+                      name="FechaAlta"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">FechaAlta</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[FechaHospitalizacion]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[FechaHospitalizacion]"
+                      name="FechaHospitalizacion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">FechaHospitalizacion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[RowVersion]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Copy Column"
+                      length="8"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[RowVersion]"
+                      name="RowVersion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">RowVersion</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idHist]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Match Output].Columns[idHist]"
+                      name="idHist"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">idHist</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\Visita.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load_Fact\Visita.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load_Fact\Visita.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load_Fact\Visita.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_Fact\Visita.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_Fact\Visita.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load_Fact.Paths[Lookup Match Output]"
+              endId="Package\Load_Fact\Hosptial.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load_Fact\Visita.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load_Fact.Paths[Lookup Match Output1]"
+              endId="Package\Load_Fact\Servicio.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load_Fact\Hosptial.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load_Fact.Paths[Lookup Match Output2]"
+              endId="Package\Load_Fact\Medico.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load_Fact\Servicio.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load_Fact.Paths[Lookup Match Output3]"
+              endId="Package\Load_Fact\NoMatchingOutput.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load_Fact\Medico.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load_Fact.Paths[Lookup No Match Output]"
+              endId="Package\Load_Fact\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load_Fact\NoMatchingOutput.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Load_Fact.Paths[OLE DB Source Output]"
+              endId="Package\Load_Fact\Visita.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load_Fact\load Source Historia Clinica.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Load_Fact"
+          TopLeft="280,143" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load_Fact">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load_Fact\load Source Historia Clinica"
+          TopLeft="383,76" />
+        <NodeLayout
+          Size="106,42"
+          Id="Package\Load_Fact\Visita"
+          TopLeft="248,144" />
+        <EdgeLayout
+          Id="Package\Load_Fact.Paths[OLE DB Source Output]"
+          TopLeft="490,118">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-189,26"
+              Start="0,0"
+              End="-189,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="-4,13" />
+                  <mssgle:LineSegment
+                    End="-185,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-185,13"
+                    Point2="-189,13"
+                    Point3="-189,17" />
+                  <mssgle:LineSegment
+                    End="-189,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="119,42"
+          Id="Package\Load_Fact\Hosptial"
+          TopLeft="544,192" />
+        <EdgeLayout
+          Id="Package\Load_Fact.Paths[Lookup Match Output]"
+          TopLeft="354,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="190,48"
+              Start="0,0"
+              End="182.5,48">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="91,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91,0"
+                    Point2="95,0"
+                    Point3="95,4" />
+                  <mssgle:LineSegment
+                    End="95,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95,44"
+                    Point2="95,48"
+                    Point3="99,48" />
+                  <mssgle:LineSegment
+                    End="182.5,48" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="46.80861328125,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="118,42"
+          Id="Package\Load_Fact\Servicio"
+          TopLeft="207,243" />
+        <EdgeLayout
+          Id="Package\Load_Fact.Paths[Lookup Match Output1]"
+          TopLeft="544,218.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-219,45.3333333333333"
+              Start="0,0"
+              End="-211.5,45.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-88.4220183486239,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-88.4220183486239,0"
+                    Point2="-92.4220183486239,0"
+                    Point3="-92.4220183486239,4" />
+                  <mssgle:LineSegment
+                    End="-92.4220183486239,41.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-92.4220183486239,41.3333333333333"
+                    Point2="-92.4220183486239,45.3333333333333"
+                    Point3="-96.4220183486239,45.3333333333333" />
+                  <mssgle:LineSegment
+                    End="-211.5,45.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-140.613405067374,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Load_Fact\Medico"
+          TopLeft="585,279" />
+        <EdgeLayout
+          Id="Package\Load_Fact.Paths[Lookup Match Output2]"
+          TopLeft="325,269.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="260,30.3333333333333"
+              Start="0,0"
+              End="252.5,30.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="105.724770642202,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.724770642202,0"
+                    Point2="109.724770642202,0"
+                    Point3="109.724770642202,4" />
+                  <mssgle:LineSegment
+                    End="109.724770642202,26.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="109.724770642202,26.3333333333333"
+                    Point2="109.724770642202,30.3333333333333"
+                    Point3="113.724770642202,30.3333333333333" />
+                  <mssgle:LineSegment
+                    End="252.5,30.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="61.5333839234517,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Load_Fact\NoMatchingOutput"
+          TopLeft="268,398" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Load_Fact\OLE DB Destination"
+          TopLeft="549,438" />
+        <EdgeLayout
+          Id="Package\Load_Fact.Paths[Lookup No Match Output]"
+          TopLeft="439,419">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110,40"
+              Start="0,0"
+              End="102.5,40">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="51,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51,0"
+                    Point2="55,0"
+                    Point3="55,4" />
+                  <mssgle:LineSegment
+                    End="55,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="55,36"
+                    Point2="55,40"
+                    Point3="59,40" />
+                  <mssgle:LineSegment
+                    End="102.5,40" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.806386718749998,-17.609375,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load_Fact.Paths[Lookup Match Output3]"
+          TopLeft="642.5,321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-289,77"
+              Start="0,0"
+              End="-289,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="-4,38.5" />
+                  <mssgle:LineSegment
+                    End="-285,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-285,38.5"
+                    Point2="-289,38.5"
+                    Point3="-289,42.5" />
+                  <mssgle:LineSegment
+                    End="-289,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-192.69138671875,43.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_Fact\load Source Historia Clinica">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_Fact\Visita">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[Visita]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_Fact\Hosptial">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[DimHospital]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_Fact\Servicio">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[DimServicio]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_Fact\Medico">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[DimMedico]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_Fact\NoMatchingOutput">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[FactVisita]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_Fact\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
