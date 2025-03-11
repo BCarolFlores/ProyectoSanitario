@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{D931FD3E-4ACF-4F84-BD9F-9AFDF5E0226F}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{A7F0EFEC-D24D-4C40-AF8D-4E62D9043EC3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{E47C601D-75F0-4374-B28C-8895A1861684}localhost.ProyectoSanitarioOLTP;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioOLTP;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Package1-{E47C601D-75F0-4374-B28C-8895A1861684}localhost.ProyectoSanitarioOLTP;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAzPn3/zZhjxsl8sOG2nPAs8m7j12T0c5jsfzPjYEfnbQAAAAAOgAAAAAIAACAAAAD//zPw7cV26z1sJdghBK5i/523J4xEmN3fHvzCXuOUsBAAAAAocUlJTQysX8BiXxl03RmMQAAAAMA+yb2GLhL3clNCAy4Cxygb4u/wzQIGcLqNeF9ksRFCzs5C/BDzQiJ4k0aBSxgg3GDfqpoQ1cahcS2ESbIRwS0</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=ProyectoSanitarioDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{1325F51A-EB06-44C7-B894-C413E39AEDC6}localhost.ProyectoSanitarioDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=DESKTOP-JJM0ELC\VM_SQLSERVER2022;User ID=sa;Initial Catalog=ProyectoSanitarioDW;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-Package1-{1325F51A-EB06-44C7-B894-C413E39AEDC6}localhost.ProyectoSanitarioDW;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ADD6byl10+mdl4sBLwUzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABt/82ZqzElkcc3MIoXcLfblT2puxSyX9adJsXeoMLCugAAAAAOgAAAAAIAACAAAABcUgOlqHWYWEtN0iUdhR4L2qR5nL8eEyCaj5dZQPBpDBAAAABt9LnLLejiCSVJAXC81VwmQAAAAGS94Ew8/3VPUkJJK8buAC9GE+BKq3mzAntYLM9N6ksLJTBRbxVi3m0YSRflHJu2RHEcQu22h07klbZksA65yNk</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -93,7 +103,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E47C601D-75F0-4374-B28C-8895A1861684}"
-          SQLTask:SqlStatementSource="EXECUTE [san].[GetDatabaseRowVersion] "
+          SQLTask:SqlStatementSource="EXECUTE  [dbo].[GetDatabaseRowVersion] "
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="DBTS"
@@ -208,16 +218,6 @@
                       name="idHospital"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[codHospital]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].ExternalColumns[codHospital]"
-                      length="20"
-                      lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[codHospital]"
-                      name="codHospital"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[Nombre]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -267,6 +267,16 @@
                       lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[RowVersion]"
                       name="RowVersion"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[CodHospital]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].ExternalColumns[CodHospital]"
+                      length="20"
+                      lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[CodHospital]"
+                      name="CodHospital"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -274,11 +284,6 @@
                       refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].ExternalColumns[idHospital]"
                       dataType="i4"
                       name="idHospital" />
-                    <externalMetadataColumn
-                      refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].ExternalColumns[codHospital]"
-                      dataType="wstr"
-                      length="20"
-                      name="codHospital" />
                     <externalMetadataColumn
                       refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
                       dataType="wstr"
@@ -304,6 +309,11 @@
                       dataType="bytes"
                       length="8"
                       name="RowVersion" />
+                    <externalMetadataColumn
+                      refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].ExternalColumns[CodHospital]"
+                      dataType="wstr"
+                      length="20"
+                      name="CodHospital" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -317,11 +327,11 @@
                       lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Error Output].Columns[idHospital]"
                       name="idHospital" />
                     <outputColumn
-                      refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Error Output].Columns[codHospital]"
+                      refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Error Output].Columns[CodHospital]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Error Output].Columns[codHospital]"
-                      name="codHospital" />
+                      lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Error Output].Columns[CodHospital]"
+                      name="CodHospital" />
                     <outputColumn
                       refId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                       dataType="wstr"
@@ -448,12 +458,12 @@
                       externalMetadataColumnId="Package\Load Hospital\Load hospital.Inputs[OLE DB Destination Input].ExternalColumns[idHospital]"
                       lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[idHospital]" />
                     <inputColumn
-                      refId="Package\Load Hospital\Load hospital.Inputs[OLE DB Destination Input].Columns[codHospital]"
+                      refId="Package\Load Hospital\Load hospital.Inputs[OLE DB Destination Input].Columns[CodHospital]"
                       cachedDataType="wstr"
                       cachedLength="20"
-                      cachedName="codHospital"
+                      cachedName="CodHospital"
                       externalMetadataColumnId="Package\Load Hospital\Load hospital.Inputs[OLE DB Destination Input].ExternalColumns[codHospital]"
-                      lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[codHospital]" />
+                      lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[CodHospital]" />
                     <inputColumn
                       refId="Package\Load Hospital\Load hospital.Inputs[OLE DB Destination Input].Columns[Nombre]"
                       cachedDataType="wstr"
@@ -511,7 +521,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Hospital\Load hospital.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
                       dataType="wstr"
-                      length="20"
+                      length="15"
                       name="Telefono" />
                     <externalMetadataColumn
                       refId="Package\Load Hospital\Load hospital.Inputs[OLE DB Destination Input].ExternalColumns[DirectorDNI]"
@@ -624,12 +634,12 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Hospital\Load staging.Inputs[OLE DB Destination Input].Columns[codHospital]"
+                      refId="Package\Load Hospital\Load staging.Inputs[OLE DB Destination Input].Columns[CodHospital]"
                       cachedDataType="wstr"
                       cachedLength="20"
-                      cachedName="codHospital"
+                      cachedName="CodHospital"
                       externalMetadataColumnId="Package\Load Hospital\Load staging.Inputs[OLE DB Destination Input].ExternalColumns[codHospital]"
-                      lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[codHospital]" />
+                      lineageId="Package\Load Hospital\Get Hospital.Outputs[OLE DB Source Output].Columns[CodHospital]" />
                     <inputColumn
                       refId="Package\Load Hospital\Load staging.Inputs[OLE DB Destination Input].Columns[Nombre]"
                       cachedDataType="wstr"
@@ -999,6 +1009,10 @@ where [refTable].[idHospital] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="159,42"
+          Id="Package\clean up staging"
+          TopLeft="293,134" />
+        <NodeLayout
           Size="207,42"
           Id="Package\Get database RowVersion"
           TopLeft="271,0" />
@@ -1006,6 +1020,18 @@ where [refTable].[idHospital] = ?</property>
           Size="180,42"
           Id="Package\Get LastRowVersion"
           TopLeft="296,69" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Load Hospital"
+          TopLeft="308,198" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Sync staging"
+          TopLeft="307,268" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Update Config"
+          TopLeft="289,334" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="374.5,42">
@@ -1040,10 +1066,6 @@ where [refTable].[idHospital] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="159,42"
-          Id="Package\clean up staging"
-          TopLeft="293,134" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="386,111">
@@ -1078,10 +1100,6 @@ where [refTable].[idHospital] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Load Hospital"
-          TopLeft="308,198" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="293,155">
@@ -1116,10 +1134,6 @@ where [refTable].[idHospital] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Sync staging"
-          TopLeft="307,268" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="379.5,240">
@@ -1142,10 +1156,6 @@ where [refTable].[idHospital] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Update Config"
-          TopLeft="289,334" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="378,310">
@@ -1189,6 +1199,14 @@ where [refTable].[idHospital] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="142,42"
+          Id="Package\Load Hospital\Load staging"
+          TopLeft="19,163" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Load Hospital\Load hospital"
+          TopLeft="304,183" />
+        <NodeLayout
           Size="140,42"
           Id="Package\Load Hospital\Get Hospital"
           TopLeft="126,5" />
@@ -1230,50 +1248,6 @@ where [refTable].[idHospital] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load Hospital\Load staging"
-          TopLeft="19,163" />
-        <EdgeLayout
-          Id="Package\Load Hospital.Paths[Lookup Match Output]"
-          TopLeft="186.5,128">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-96.5,35"
-              Start="0,0"
-              End="-96.5,27.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.5"
-                    Point2="0,17.5"
-                    Point3="-4,17.5" />
-                  <mssgle:LineSegment
-                    End="-92.5,17.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-92.5,17.5"
-                    Point2="-96.5,17.5"
-                    Point3="-96.5,21.5" />
-                  <mssgle:LineSegment
-                    End="-96.5,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-96.44138671875,22.5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Load Hospital\Load hospital"
-          TopLeft="304,183" />
         <EdgeLayout
           Id="Package\Load Hospital.Paths[Lookup No Match Output]"
           TopLeft="204.333333333333,128">
@@ -1310,40 +1284,45 @@ where [refTable].[idHospital] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Hospital.Paths[Lookup Match Output]"
+          TopLeft="186.5,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-96.5,35"
+              Start="0,0"
+              End="-96.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="-4,17.5" />
+                  <mssgle:LineSegment
+                    End="-92.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-92.5,17.5"
+                    Point2="-96.5,17.5"
+                    Point3="-96.5,21.5" />
+                  <mssgle:LineSegment
+                    End="-96.5,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-96.44138671875,22.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Hospital\Get Hospital">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Hospital\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[san].[DimHospital]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Hospital\Load staging">
     <Properties>
@@ -1367,6 +1346,37 @@ where [refTable].[idHospital] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Hospital\Get Hospital">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Hospital\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[san].[DimHospital]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
