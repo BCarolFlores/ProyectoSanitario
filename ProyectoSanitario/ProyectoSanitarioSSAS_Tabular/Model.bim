@@ -1,0 +1,430 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/DESKTOP-JJM0ELC\\VM_SQLSERVER2022;ProyectoSanitarioDW",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "DESKTOP-JJM0ELC\\VM_SQLSERVER2022",
+            "database": "ProyectoSanitarioDW"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "desktop-jjm0elc\\vm_sqlserver2022;ProyectoSanitarioDW",
+          "Username": "sa",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "san DimHospital",
+        "columns": [
+          {
+            "name": "idHospitalSK",
+            "dataType": "int64",
+            "sourceColumn": "idHospitalSK"
+          },
+          {
+            "name": "idHospital",
+            "dataType": "int64",
+            "sourceColumn": "idHospital"
+          },
+          {
+            "name": "codHospital",
+            "dataType": "string",
+            "sourceColumn": "codHospital"
+          },
+          {
+            "name": "Nombre",
+            "dataType": "string",
+            "sourceColumn": "Nombre"
+          },
+          {
+            "name": "Ciudad",
+            "dataType": "string",
+            "sourceColumn": "Ciudad"
+          },
+          {
+            "name": "Telefono",
+            "dataType": "string",
+            "sourceColumn": "Telefono"
+          },
+          {
+            "name": "DirectorDNI",
+            "dataType": "string",
+            "sourceColumn": "DirectorDNI"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-JJM0ELC\\VM_SQLSERVER2022;ProyectoSanitarioDW\",",
+                "    san_DimHospital = Source{[Schema=\"san\",Item=\"DimHospital\"]}[Data]",
+                "in",
+                "    san_DimHospital"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "san DimMedico",
+        "columns": [
+          {
+            "name": "idMedicoSK",
+            "dataType": "int64",
+            "sourceColumn": "idMedicoSK"
+          },
+          {
+            "name": "idMedico",
+            "dataType": "int64",
+            "sourceColumn": "idMedico"
+          },
+          {
+            "name": "DNI",
+            "dataType": "string",
+            "sourceColumn": "DNI"
+          },
+          {
+            "name": "Nombre",
+            "dataType": "string",
+            "sourceColumn": "Nombre"
+          },
+          {
+            "name": "Apellidos",
+            "dataType": "string",
+            "sourceColumn": "Apellidos"
+          },
+          {
+            "name": "FechaNacimiento",
+            "dataType": "dateTime",
+            "sourceColumn": "FechaNacimiento"
+          },
+          {
+            "name": "EsDirector",
+            "dataType": "boolean",
+            "sourceColumn": "EsDirector"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-JJM0ELC\\VM_SQLSERVER2022;ProyectoSanitarioDW\",",
+                "    san_DimMedico = Source{[Schema=\"san\",Item=\"DimMedico\"]}[Data]",
+                "in",
+                "    san_DimMedico"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "san DimPaciente",
+        "columns": [
+          {
+            "name": "idPacienteSK",
+            "dataType": "int64",
+            "sourceColumn": "idPacienteSK"
+          },
+          {
+            "name": "idPaciente",
+            "dataType": "int64",
+            "sourceColumn": "idPaciente"
+          },
+          {
+            "name": "DNI",
+            "dataType": "string",
+            "sourceColumn": "DNI"
+          },
+          {
+            "name": "Nombre",
+            "dataType": "string",
+            "sourceColumn": "Nombre"
+          },
+          {
+            "name": "Apellidos",
+            "dataType": "string",
+            "sourceColumn": "Apellidos"
+          },
+          {
+            "name": "FechaNacimiento",
+            "dataType": "dateTime",
+            "sourceColumn": "FechaNacimiento"
+          },
+          {
+            "name": "NumeroSeguridadSocial",
+            "dataType": "string",
+            "sourceColumn": "NumeroSeguridadSocial"
+          },
+          {
+            "name": "OtrosDatos",
+            "dataType": "string",
+            "sourceColumn": "OtrosDatos"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-JJM0ELC\\VM_SQLSERVER2022;ProyectoSanitarioDW\",",
+                "    san_DimPaciente = Source{[Schema=\"san\",Item=\"DimPaciente\"]}[Data]",
+                "in",
+                "    san_DimPaciente"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "san DimServicio",
+        "columns": [
+          {
+            "name": "idServicioSK",
+            "dataType": "int64",
+            "sourceColumn": "idServicioSK"
+          },
+          {
+            "name": "idServicio",
+            "dataType": "int64",
+            "sourceColumn": "idServicio"
+          },
+          {
+            "name": "NombreCompleto",
+            "dataType": "string",
+            "sourceColumn": "NombreCompleto"
+          },
+          {
+            "name": "Comentario",
+            "dataType": "string",
+            "sourceColumn": "Comentario"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-JJM0ELC\\VM_SQLSERVER2022;ProyectoSanitarioDW\",",
+                "    san_DimServicio = Source{[Schema=\"san\",Item=\"DimServicio\"]}[Data]",
+                "in",
+                "    san_DimServicio"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "san FactMedicoServicioHospital",
+        "columns": [
+          {
+            "name": "idMedicoServicioHospital",
+            "dataType": "int64",
+            "sourceColumn": "idMedicoServicioHospital"
+          },
+          {
+            "name": "idMedicoSK",
+            "dataType": "int64",
+            "sourceColumn": "idMedicoSK"
+          },
+          {
+            "name": "idServicioSK",
+            "dataType": "int64",
+            "sourceColumn": "idServicioSK"
+          },
+          {
+            "name": "idHospitalSK",
+            "dataType": "int64",
+            "sourceColumn": "idHospitalSK"
+          },
+          {
+            "name": "idTiempo",
+            "dataType": "int64",
+            "sourceColumn": "idTiempo"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-JJM0ELC\\VM_SQLSERVER2022;ProyectoSanitarioDW\",",
+                "    san_FactMedicoServicioHospital = Source{[Schema=\"san\",Item=\"FactMedicoServicioHospital\"]}[Data]",
+                "in",
+                "    san_FactMedicoServicioHospital"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "san FactVisita",
+        "columns": [
+          {
+            "name": "idVisitaSK",
+            "dataType": "int64",
+            "sourceColumn": "idVisitaSK"
+          },
+          {
+            "name": "idPacienteSK",
+            "dataType": "int64",
+            "sourceColumn": "idPacienteSK"
+          },
+          {
+            "name": "idMedicoSK",
+            "dataType": "int64",
+            "sourceColumn": "idMedicoSK"
+          },
+          {
+            "name": "idHospitalSK",
+            "dataType": "int64",
+            "sourceColumn": "idHospitalSK"
+          },
+          {
+            "name": "idServicioSK",
+            "dataType": "int64",
+            "sourceColumn": "idServicioSK"
+          },
+          {
+            "name": "idTiempo",
+            "dataType": "int64",
+            "sourceColumn": "idTiempo"
+          },
+          {
+            "name": "FechaVisita",
+            "dataType": "dateTime",
+            "sourceColumn": "FechaVisita"
+          },
+          {
+            "name": "NumeroHabitacion",
+            "dataType": "string",
+            "sourceColumn": "NumeroHabitacion"
+          },
+          {
+            "name": "Diagnostico",
+            "dataType": "string",
+            "sourceColumn": "Diagnostico"
+          },
+          {
+            "name": "Tratamiento",
+            "dataType": "string",
+            "sourceColumn": "Tratamiento"
+          },
+          {
+            "name": "FechaAlta",
+            "dataType": "string",
+            "sourceColumn": "FechaAlta"
+          },
+          {
+            "name": "codHist",
+            "dataType": "int64",
+            "sourceColumn": "codHist"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-JJM0ELC\\VM_SQLSERVER2022;ProyectoSanitarioDW\",",
+                "    san_FactVisita = Source{[Schema=\"san\",Item=\"FactVisita\"]}[Data]",
+                "in",
+                "    san_FactVisita"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "fff1f708-ee48-4334-bd41-34b33c7a74b4",
+        "fromTable": "san FactVisita",
+        "fromColumn": "idHospitalSK",
+        "toTable": "san DimHospital",
+        "toColumn": "idHospitalSK"
+      },
+      {
+        "name": "6d6b3981-dce0-4eed-8e0d-626ae8f02ac4",
+        "fromTable": "san FactMedicoServicioHospital",
+        "fromColumn": "idMedicoSK",
+        "toTable": "san DimMedico",
+        "toColumn": "idMedicoSK"
+      },
+      {
+        "name": "5b1a36df-ffb4-4cb4-99a2-d11d6e305810",
+        "fromTable": "san FactMedicoServicioHospital",
+        "fromColumn": "idServicioSK",
+        "toTable": "san DimServicio",
+        "toColumn": "idServicioSK"
+      },
+      {
+        "name": "0b24dc45-9b7a-4ff3-92cc-a41e9dc393f1",
+        "fromTable": "san FactVisita",
+        "fromColumn": "idServicioSK",
+        "toTable": "san DimServicio",
+        "toColumn": "idServicioSK"
+      },
+      {
+        "name": "9df31eda-a568-467a-8181-64ae194c2b3d",
+        "fromTable": "san FactMedicoServicioHospital",
+        "fromColumn": "idHospitalSK",
+        "toTable": "san DimHospital",
+        "toColumn": "idHospitalSK"
+      },
+      {
+        "name": "ef975da8-99ac-4b63-9a1e-b49c69543b76",
+        "fromTable": "san FactVisita",
+        "fromColumn": "idMedicoSK",
+        "toTable": "san DimMedico",
+        "toColumn": "idMedicoSK"
+      },
+      {
+        "name": "4729d715-c8ba-47e0-942f-7139401818d4",
+        "fromTable": "san FactVisita",
+        "fromColumn": "idPacienteSK",
+        "toTable": "san DimPaciente",
+        "toColumn": "idPacienteSK"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
