@@ -12,6 +12,7 @@ Yamile Calderon
 
 Alex Flores
 
-### Solucion con 2 proyectos. 
+### Solucion con 4 proyectos. 
 
-![image](https://github.com/user-attachments/assets/9cfe7273-4b7d-4777-af1f-865c7d5ca041)
+![image](https://github.com/user-attachments/assets/4cc0548a-7f1c-4931-88b7-58a052233ecf)
+
