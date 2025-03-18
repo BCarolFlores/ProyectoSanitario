@@ -27,20 +27,22 @@
     ],
     "tables": [
       {
-        "name": "san DimHospital",
+        "name": "Hospital",
         "columns": [
           {
             "name": "idHospitalSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idHospitalSK"
           },
           {
             "name": "idHospital",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idHospital"
           },
           {
-            "name": "codHospital",
+            "name": "Codigo Hospital",
             "dataType": "string",
             "sourceColumn": "codHospital"
           },
@@ -83,16 +85,18 @@
         ]
       },
       {
-        "name": "san DimMedico",
+        "name": "Medico",
         "columns": [
           {
             "name": "idMedicoSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idMedicoSK"
           },
           {
             "name": "idMedico",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idMedico"
           },
           {
@@ -139,16 +143,18 @@
         ]
       },
       {
-        "name": "san DimPaciente",
+        "name": "Paciente",
         "columns": [
           {
             "name": "idPacienteSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idPacienteSK"
           },
           {
             "name": "idPaciente",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idPaciente"
           },
           {
@@ -167,17 +173,17 @@
             "sourceColumn": "Apellidos"
           },
           {
-            "name": "FechaNacimiento",
+            "name": "Fecha Nacimiento",
             "dataType": "dateTime",
             "sourceColumn": "FechaNacimiento"
           },
           {
-            "name": "NumeroSeguridadSocial",
+            "name": "Numero Seguridad Social",
             "dataType": "string",
             "sourceColumn": "NumeroSeguridadSocial"
           },
           {
-            "name": "OtrosDatos",
+            "name": "Otros Datos",
             "dataType": "string",
             "sourceColumn": "OtrosDatos"
           }
@@ -200,20 +206,22 @@
         ]
       },
       {
-        "name": "san DimServicio",
+        "name": "Servicio",
         "columns": [
           {
             "name": "idServicioSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idServicioSK"
           },
           {
             "name": "idServicio",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idServicio"
           },
           {
-            "name": "NombreCompleto",
+            "name": "Nombre Completo",
             "dataType": "string",
             "sourceColumn": "NombreCompleto"
           },
@@ -241,31 +249,36 @@
         ]
       },
       {
-        "name": "san FactMedicoServicioHospital",
+        "name": "Metricas Hospital Medico Servicio",
         "columns": [
           {
             "name": "idMedicoServicioHospital",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idMedicoServicioHospital"
           },
           {
             "name": "idMedicoSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idMedicoSK"
           },
           {
             "name": "idServicioSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idServicioSK"
           },
           {
             "name": "idHospitalSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idHospitalSK"
           },
           {
             "name": "idTiempo",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idTiempo"
           }
         ],
@@ -284,48 +297,60 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "Cantidad Servicios",
+            "expression": "COUNTROWS('Metricas Hospital Medico Servicio')"
+          }
         ]
       },
       {
-        "name": "san FactVisita",
+        "name": "Visitas",
         "columns": [
           {
             "name": "idVisitaSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idVisitaSK"
           },
           {
             "name": "idPacienteSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idPacienteSK"
           },
           {
             "name": "idMedicoSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idMedicoSK"
           },
           {
             "name": "idHospitalSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idHospitalSK"
           },
           {
             "name": "idServicioSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idServicioSK"
           },
           {
             "name": "idTiempo",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "idTiempo"
           },
           {
-            "name": "FechaVisita",
+            "name": "Fecha Visita",
             "dataType": "dateTime",
             "sourceColumn": "FechaVisita"
           },
           {
-            "name": "NumeroHabitacion",
+            "name": "Numero Habitacion",
             "dataType": "string",
             "sourceColumn": "NumeroHabitacion"
           },
@@ -340,12 +365,12 @@
             "sourceColumn": "Tratamiento"
           },
           {
-            "name": "FechaAlta",
+            "name": "Fecha Alta",
             "dataType": "string",
             "sourceColumn": "FechaAlta"
           },
           {
-            "name": "codHist",
+            "name": "Codigo Historico",
             "dataType": "int64",
             "sourceColumn": "codHist"
           }
@@ -371,51 +396,51 @@
     "relationships": [
       {
         "name": "fff1f708-ee48-4334-bd41-34b33c7a74b4",
-        "fromTable": "san FactVisita",
+        "fromTable": "Visitas",
         "fromColumn": "idHospitalSK",
-        "toTable": "san DimHospital",
+        "toTable": "Hospital",
         "toColumn": "idHospitalSK"
       },
       {
         "name": "6d6b3981-dce0-4eed-8e0d-626ae8f02ac4",
-        "fromTable": "san FactMedicoServicioHospital",
+        "fromTable": "Metricas Hospital Medico Servicio",
         "fromColumn": "idMedicoSK",
-        "toTable": "san DimMedico",
+        "toTable": "Medico",
         "toColumn": "idMedicoSK"
       },
       {
         "name": "5b1a36df-ffb4-4cb4-99a2-d11d6e305810",
-        "fromTable": "san FactMedicoServicioHospital",
+        "fromTable": "Metricas Hospital Medico Servicio",
         "fromColumn": "idServicioSK",
-        "toTable": "san DimServicio",
+        "toTable": "Servicio",
         "toColumn": "idServicioSK"
       },
       {
         "name": "0b24dc45-9b7a-4ff3-92cc-a41e9dc393f1",
-        "fromTable": "san FactVisita",
+        "fromTable": "Visitas",
         "fromColumn": "idServicioSK",
-        "toTable": "san DimServicio",
+        "toTable": "Servicio",
         "toColumn": "idServicioSK"
       },
       {
         "name": "9df31eda-a568-467a-8181-64ae194c2b3d",
-        "fromTable": "san FactMedicoServicioHospital",
+        "fromTable": "Metricas Hospital Medico Servicio",
         "fromColumn": "idHospitalSK",
-        "toTable": "san DimHospital",
+        "toTable": "Hospital",
         "toColumn": "idHospitalSK"
       },
       {
         "name": "ef975da8-99ac-4b63-9a1e-b49c69543b76",
-        "fromTable": "san FactVisita",
+        "fromTable": "Visitas",
         "fromColumn": "idMedicoSK",
-        "toTable": "san DimMedico",
+        "toTable": "Medico",
         "toColumn": "idMedicoSK"
       },
       {
         "name": "4729d715-c8ba-47e0-942f-7139401818d4",
-        "fromTable": "san FactVisita",
+        "fromTable": "Visitas",
         "fromColumn": "idPacienteSK",
-        "toTable": "san DimPaciente",
+        "toTable": "Paciente",
         "toColumn": "idPacienteSK"
       }
     ],
