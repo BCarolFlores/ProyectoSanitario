@@ -371,7 +371,7 @@
           },
           {
             "name": "Codigo Historico",
-            "dataType": "int64",
+            "dataType": "string",
             "sourceColumn": "codHist"
           }
         ],
@@ -389,6 +389,12 @@
                 "    san_FactVisita"
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Cantidad Visitas",
+            "expression": " COUNTROWS(Visitas)"
           }
         ]
       }
